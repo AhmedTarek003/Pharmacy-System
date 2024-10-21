@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/v1/auth", require("./routes/authRoute"));
+app.use("/api/v1/medicines", require("./routes/medicineRoute"));
 
 app.use("*", () => {
   throw new Error("Invalid route");
