@@ -2,7 +2,6 @@ const express = require("express");
 const connectDB = require("./db/connectDB");
 const errorHandler = require("./middlewares/errorHandling");
 require("dotenv").config();
-const cookieparser = require("cookie-parser");
 const cookieParser = require("cookie-parser");
 
 connectDB();
@@ -13,6 +12,7 @@ app.use(cookieParser());
 
 app.use("/api/v1/auth", require("./routes/authRoute"));
 app.use("/api/v1/medicines", require("./routes/medicineRoute"));
+app.use("/api/v1/invoices", require("./routes/invoicesRoute"));
 
 app.use("*", () => {
   throw new Error("Invalid route");

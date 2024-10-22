@@ -24,7 +24,7 @@ exports.addMedicineCtrl = async (req, res) => {
       if (req.file) {
         result = await uploadImageToCloudinary(req.file.path);
       }
-      medicine = Medicine({
+      medicine = new Medicine({
         medicineName,
         company,
         expireDate,

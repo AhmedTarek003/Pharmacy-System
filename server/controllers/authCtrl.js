@@ -8,7 +8,7 @@ exports.registerCtrl = async (req, res) => {
     const checkUser = await User.findOne({ email });
     if (checkUser) return res.status(400).json({ msg: "user already exists" });
     const hashPassword = await bcrypt.hash(password, 10);
-    const newUser = User({
+    const newUser = new User({
       userName,
       email,
       password: hashPassword,
