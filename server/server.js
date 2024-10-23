@@ -14,6 +14,8 @@ app.use("/api/v1/auth", require("./routes/authRoute"));
 app.use("/api/v1/medicines", require("./routes/medicineRoute"));
 app.use("/api/v1/invoices", require("./routes/invoicesRoute"));
 app.use("/api/v1/suppliers", require("./routes/supplierRoute"));
+app.use("/api/v1/notifications", require("./routes/notificationRoute"));
+app.use("/api/v1/orders", require("./routes/orderRoute"));
 
 app.use("*", () => {
   throw new Error("Invalid route");

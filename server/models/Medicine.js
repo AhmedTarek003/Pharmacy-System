@@ -17,8 +17,10 @@ const medicineSchema = new mongoose.Schema(
     },
     medicineImage: {
       type: Object,
-      url: null,
-      publicId: null,
+      default: {
+        url: null,
+        publicId: null,
+      },
     },
     price: {
       type: Number,

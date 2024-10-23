@@ -1,5 +1,6 @@
 const Invoice = require("../models/Invoice");
 const Medicine = require("../models/Medicine");
+const Notification = require("../models/Notification");
 const validateItemId = require("../utils/validateId");
 
 exports.createInvoiceCtrl = async (req, res) => {
@@ -18,6 +19,29 @@ exports.createInvoiceCtrl = async (req, res) => {
         });
       totalAmount += medicine.price * quantity;
       medicine.stock -= quantity;
+      // create a notification every after 3 days if medicine stock is less than 20 items
+      if (medicine.stock < 20) {
+        const existNotification = await Notification.findOne({
+          $and: [{ relatedMedicineId: medicineId }, { type: "inventory" }],
+        }).sort("-createdAt");
+
+        const now = new Date();
+        const differenceInTime =
+          existNotification &&
+          now.getTime() - existNotification.createdAt.getTime();
+        const differenceInDays = Math.floor(
+          differenceInTime / (1000 * 3600 * 24)
+        );
+
+        if (!existNotification || differenceInDays > 3) {
+          const notification = new Notification({
+            type: "inventory",
+            message: `the medicine ${medicine.medicineName} is less than 20 items, the stock of ${medicine.medicineName} is ${medicine.stock}`,
+            relatedMedicineId: medicineId,
+          });
+          await notification.save();
+        }
+      }
       await medicine.save();
     }
 
