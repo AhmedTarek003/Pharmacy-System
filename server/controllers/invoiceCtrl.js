@@ -35,7 +35,7 @@ exports.createInvoiceCtrl = async (req, res) => {
 
         if (!existNotification || differenceInDays > 3) {
           const notification = new Notification({
-            type: "inventory",
+            type: "stock",
             message: `the medicine ${medicine.medicineName} is less than 20 items, the stock of ${medicine.medicineName} is ${medicine.stock}`,
             relatedMedicineId: medicineId,
           });

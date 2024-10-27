@@ -10,6 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+require("./utils/scheduler");
+
 app.use("/api/v1/auth", require("./routes/authRoute"));
 app.use("/api/v1/medicines", require("./routes/medicineRoute"));
 app.use("/api/v1/invoices", require("./routes/invoicesRoute"));
