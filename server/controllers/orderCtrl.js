@@ -123,8 +123,9 @@ exports.createOrderCtrl = async (req, res) => {
 };
 
 exports.getAllOrdersCtrl = async (req, res) => {
+  const sort = req.query.sort || "createdAt";
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().sort(sort);
     res.status(200).json(orders);
   } catch (error) {
     console.log(error);
