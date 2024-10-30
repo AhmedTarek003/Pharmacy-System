@@ -3,13 +3,21 @@ const connectDB = require("./db/connectDB");
 const errorHandler = require("./middlewares/errorHandling");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const hpp = require("hpp");
+const helmet = require("helmet");
+const { rateLimiter } = require("./middlewares/rateLimiterHandler");
+// const mongosanitize = require("express-mongo-sanitize");
 
 connectDB();
 const app = express();
 
-app.use(express.json());
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(express.json({ limit: "10kb" }));
+// app.use(mongosanitize());
 app.use(cookieParser());
-
+app.use(rateLimiter);
+app.use(hpp());
+app.use(helmet());
 require("./utils/scheduler");
 
 app.use("/api/v1/auth", require("./routes/authRoute"));
