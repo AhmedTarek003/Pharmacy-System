@@ -22,7 +22,7 @@ const SignUp = () => {
     <div className="h-svh w-full auth-background">
       <div className="bg-[var(--overlay-color)] h-svh flex justify-center items-center p-3">
         <div className="p-3 rounded-md w-[30%] max-md:w-[100%] max-lg:w-[80%] shadow-md backdrop-blur-lg bg-opacity-0">
-          <h1 className="text-3xl text-slate-300 mt-3 mb-2 text-center font-bold">
+          <h1 className="text-3xl text-[var(--dark-color)] mt-3 mb-2 text-center font-bold">
             Welcome to Elshfa Pharmacy
           </h1>
           <h2 className="text-2xl text-white mb-5 text-center font-semibold">
