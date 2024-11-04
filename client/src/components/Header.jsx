@@ -35,7 +35,7 @@ const Header = () => {
         />
       </div>
       <div className="flex items-center gap-3 relative">
-        <div className="relative">
+        <div className="relative cursor-pointer">
           <RiNotification2Line size={23} color="var(--gray-color)" />
           <span className="block absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></span>
         </div>

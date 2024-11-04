@@ -1,4 +1,5 @@
-exports.ORDER_EMAIL_TEMPLATE = (supplier, rows, totalAmount) => {
+const moment = require("moment");
+exports.ORDER_EMAIL_TEMPLATE = (supplier, rows, totalAmount, expectedDate) => {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,10 @@ exports.ORDER_EMAIL_TEMPLATE = (supplier, rows, totalAmount) => {
         <!-- Add more rows as needed -->
       </tbody>
     </table>
-    <div style="font-weight:semi-bold;">total amount : $${totalAmount}</div>
+    <div style="font-weight:semi-bold; color:#2d9596; margin-bottom:5px; margin-top:5px">Expected Date : ${moment(
+      expectedDate
+    ).format("YYYY-MM-DD")}</div>
+    <div style="font-weight:semi-bold; color:#60a5fa;">total amount : $${totalAmount}</div>
 
     <!-- Additional Notes -->
     <p>If you have any questions or need further clarification, please feel free to reach out. We appreciate your prompt response and look forward to your confirmation of this order.</p>

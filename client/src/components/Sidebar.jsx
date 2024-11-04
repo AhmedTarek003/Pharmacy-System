@@ -45,15 +45,6 @@ const Sidebar = () => {
             </NavLink>
             <NavLink
               onClick={() => setOpenMenu(false)}
-              to={"/pharmacystock"}
-              className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
-          hover:bg-[var(--sky-color)] hover:text-white
-            transition-all"
-            >
-              <FaChartSimple /> <span>Pharmacy Stock</span>
-            </NavLink>
-            <NavLink
-              onClick={() => setOpenMenu(false)}
               to={"/medicineslist"}
               className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
           hover:bg-[var(--sky-color)] hover:text-white
@@ -63,12 +54,21 @@ const Sidebar = () => {
             </NavLink>
             <NavLink
               onClick={() => setOpenMenu(false)}
-              to={"/purshase"}
+              to={"/purshases"}
               className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
           hover:bg-[var(--sky-color)] hover:text-white
             transition-all"
             >
-              <AiOutlineShoppingCart /> <span>Purshase</span>
+              <AiOutlineShoppingCart /> <span>Purshases</span>
+            </NavLink>
+            <NavLink
+              onClick={() => setOpenMenu(false)}
+              to={"/pharmacystock"}
+              className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
+          hover:bg-[var(--sky-color)] hover:text-white
+            transition-all"
+            >
+              <FaChartSimple /> <span>Pharmacy Stock</span>
             </NavLink>
             <NavLink
               onClick={() => setOpenMenu(false)}
@@ -100,7 +100,7 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
-      <div className="flex-[2] h-svh shadow-lg bg-white max-md:hidden">
+      <div className="flex-[2] h-screen shadow-lg bg-white max-md:hidden">
         <h1 className="text-center mt-5 h1 text-[var(--dark-color)] border-b-2 pb-3 shadow-md">
           Elshfa Pharmacy
         </h1>
@@ -122,14 +122,6 @@ const Sidebar = () => {
             <AiOutlineDashboard /> <span>Dashboard</span>
           </NavLink>
           <NavLink
-            to={"/pharmacystock"}
-            className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
-          hover:bg-[var(--sky-color)] hover:text-white
-            transition-all"
-          >
-            <FaChartSimple /> <span>Pharmacy Stock</span>
-          </NavLink>
-          <NavLink
             to={"/medicineslist"}
             className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
           hover:bg-[var(--sky-color)] hover:text-white
@@ -138,12 +130,20 @@ const Sidebar = () => {
             <GiMedicines /> <span>Medicines List</span>
           </NavLink>
           <NavLink
-            to={"/purshase"}
+            to={"/purshases"}
             className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
           hover:bg-[var(--sky-color)] hover:text-white
             transition-all"
           >
-            <AiOutlineShoppingCart /> <span>Purshase</span>
+            <AiOutlineShoppingCart /> <span>Purshases</span>
+          </NavLink>
+          <NavLink
+            to={"/pharmacystock"}
+            className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold 
+          hover:bg-[var(--sky-color)] hover:text-white
+            transition-all"
+          >
+            <FaChartSimple /> <span>Pharmacy Stock</span>
           </NavLink>
           <NavLink
             to={"/suppliers"}

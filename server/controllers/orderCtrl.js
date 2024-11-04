@@ -7,7 +7,7 @@ const { ORDER_EMAIL_TEMPLATE } = require("../utils/templates/orderTemplate");
 const validateItemId = require("../utils/validateId");
 
 exports.createOrderCtrl = async (req, res) => {
-  const { supplier, medicines, totalAmount } = req.body;
+  const { supplier, medicines, expectedDate, totalAmount } = req.body;
   try {
     validateItemId(supplier);
     const existSupplier = await Supplier.findById(supplier);
@@ -20,9 +20,15 @@ exports.createOrderCtrl = async (req, res) => {
         });
       }
     }
+    if (expectedDate <= new Date().toISOString()) {
+      return res.status(400).json({
+        msg: `the expected date must be in the future`,
+      });
+    }
     const order = new Order({
       supplier,
       medicines,
+      expectedDate,
       totalAmount,
     });
     await order.save();
@@ -110,7 +116,7 @@ exports.createOrderCtrl = async (req, res) => {
     await sendMail(
       existSupplier.email,
       "Elshfa Pharmacy",
-      ORDER_EMAIL_TEMPLATE(existSupplier, rows, totalAmount)
+      ORDER_EMAIL_TEMPLATE(existSupplier, rows, totalAmount, expectedDate)
     );
     res.status(201).json({ msg: "created order successfully", order });
   } catch (error) {
@@ -125,7 +131,9 @@ exports.createOrderCtrl = async (req, res) => {
 exports.getAllOrdersCtrl = async (req, res) => {
   const sort = req.query.sort || "createdAt";
   try {
-    const orders = await Order.find().sort(sort);
+    const orders = await Order.find()
+      .sort(sort)
+      .populate("supplier", "userName");
     res.status(200).json(orders);
   } catch (error) {
     console.log(error);
@@ -141,6 +149,9 @@ exports.receiveOrderCtrl = async (req, res) => {
     if (!order) return res.status(404).json({ msg: "order not found" });
     if (order.status === "received")
       return res.status(200).json({ msg: "you already received this order" });
+    if (order.status !== "confirmed" && order.status !== "received") {
+      return res.status(400).json({ msg: "the order is not confirmed yet" });
+    }
     for (let item of order.medicines) {
       meds.push(item.medicineName);
       let medicine = await Medicine.findOne({
@@ -179,7 +190,7 @@ exports.receiveOrderCtrl = async (req, res) => {
 exports.getOrderCtrl = async (req, res) => {
   const { id } = req.params;
   try {
-    const order = await Order.findById(id);
+    const order = await Order.findById(id).populate("supplier");
     if (!order) return res.status(404).json({ msg: "order not found" });
     res.status(200).json(order);
   } catch (error) {

@@ -39,13 +39,17 @@ const orderSchema = new mongoose.Schema(
         },
       },
     ],
+    expectedDate: {
+      type: Date,
+      required: true,
+    },
     totalAmount: {
       type: Number,
       required: true,
     },
     status: {
       type: String,
-      enum: ["pending", "received", "canceled"],
+      enum: ["pending", "confirmed", "received", "canceled"],
       default: "pending",
     },
   },
