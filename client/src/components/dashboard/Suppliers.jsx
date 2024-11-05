@@ -1,6 +1,6 @@
 const Suppliers = () => {
   return (
-    <div className="bg-white flex-[5] max-h-60 overflow-auto rounded-md p-2 shadow-lg">
+    <div className="bg-white flex-[5] max-h-60 overflow-auto rounded-md p-2 shadow-lg max-md:mb-3">
       <h1 className="text-[27px] font-bold border-b-2 pb-1 w-fit mx-auto text-gray-700 text-center">
         Suppliers
       </h1>

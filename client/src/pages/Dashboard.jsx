@@ -58,11 +58,11 @@ const Dashboard = () => {
         />
         <Box title={"Sales"} number={"100$"} color={"var(--sky-color)"} />
       </div>
-      <div className="flex gap-3 mt-5">
+      <div className="md:flex gap-3 mt-5">
         <ExpireList />
         <RecentOrders />
       </div>
-      <div className="flex gap-3 mt-5">
+      <div className="md:flex gap-3 mt-5">
         <Suppliers />
         <Reports />
       </div>

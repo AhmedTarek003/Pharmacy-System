@@ -4,9 +4,9 @@ import Sidebar from "../components/Sidebar";
 
 const Home = () => {
   return (
-    <div className="flex md:gap-1">
+    <div className="md:flex md:gap-1">
       <Sidebar />
-      <div className="flex-[10] overflow-auto h-screen">
+      <div className="md:flex-[10] md:overflow-auto h-screen">
         <Header />
         <Outlet />
       </div>

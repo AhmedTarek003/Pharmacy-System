@@ -3,16 +3,24 @@ import { AiOutlineDashboard, AiOutlineShoppingCart } from "react-icons/ai";
 import { FaChartSimple, FaFileInvoice } from "react-icons/fa6";
 import { GiFiles, GiMedicines } from "react-icons/gi";
 import { MdOutlineMenu, MdOutlinePeople } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Overlay from "./Overlay";
 
 const Sidebar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  useEffect(() => {
+    if (openMenu) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  });
   return (
     <>
-      <div className="md:hidden relative">
+      <div className="md:hidden">
         <MdOutlineMenu
           size={30}
-          className={`absolute top-5 left-1 z-[99] ${
+          className={`absolute top-4 left-1 z-[99] ${
             openMenu ? "rotate-90" : "rotate-0"
           } transition-all`}
           onClick={() => setOpenMenu(!openMenu)}
@@ -20,7 +28,7 @@ const Sidebar = () => {
         <div
           className={`absolute top-0 ${
             openMenu ? "left-0" : "-left-96"
-          } z-50 w-56 h-svh shadow-lg bg-white mt-6`}
+          } z-[98] w-56 h-screen shadow-lg bg-white pt-6`}
         >
           <h1 className="text-center mt-5 h1 text-[var(--dark-color)] border-b-2 pb-3 shadow-md">
             Elshfa Pharmacy
@@ -171,6 +179,7 @@ const Sidebar = () => {
           </NavLink>
         </ul>
       </div>
+      {openMenu && <Overlay />}
     </>
   );
 };
