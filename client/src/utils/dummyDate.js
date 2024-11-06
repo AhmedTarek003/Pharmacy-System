@@ -42,7 +42,7 @@ const orders = [
     _id: "6728a343022e1c17cbf1b3b7",
     supplier: {
       _id: "671ce70ce9d1a74dacbecbc7",
-      userName: "Ahmed Tarek",
+      userName: "Ali",
     },
     medicines: [
       {
@@ -73,6 +73,84 @@ const orders = [
     expectedDate: "2024-12-01T13:45:46.311Z",
     totalAmount: 1500,
     status: "pending",
+    createdAt: "2024-11-04T10:34:43.852Z",
+    updatedAt: "2024-11-04T10:34:43.852Z",
+    __v: 0,
+  },
+  {
+    _id: "6728a343092e1c17cbf1b3b7",
+    supplier: {
+      _id: "671ce70ce9d1a74dacbecbc7",
+      userName: "houda",
+    },
+    medicines: [
+      {
+        medicineName: "bandol",
+        company: "c1",
+        expireDate: "2027-11-23T13:45:46.311Z",
+        medicineImage: {
+          url: null,
+          publicId: null,
+        },
+        unitPrice: 10,
+        quantity: 100,
+        _id: "6728a343022e1c17cbf1b3b8",
+      },
+      {
+        medicineName: "revo",
+        company: "c1",
+        expireDate: "2028-12-23T13:45:46.311Z",
+        medicineImage: {
+          url: null,
+          publicId: null,
+        },
+        unitPrice: 5,
+        quantity: 100,
+        _id: "6728a343022e1c17cbf1b3b9",
+      },
+    ],
+    expectedDate: "2024-12-01T13:45:46.311Z",
+    totalAmount: 1500,
+    status: "canceled",
+    createdAt: "2024-11-04T10:34:43.852Z",
+    updatedAt: "2024-11-04T10:34:43.852Z",
+    __v: 0,
+  },
+  {
+    _id: "6728a343092e1c17cbf1b3b7",
+    supplier: {
+      _id: "671ce70ce9d1a74dacbecbc7",
+      userName: "houda",
+    },
+    medicines: [
+      {
+        medicineName: "bandol",
+        company: "c1",
+        expireDate: "2027-11-23T13:45:46.311Z",
+        medicineImage: {
+          url: null,
+          publicId: null,
+        },
+        unitPrice: 10,
+        quantity: 100,
+        _id: "6728a343022e1c17cbf1b3b8",
+      },
+      {
+        medicineName: "revo",
+        company: "c1",
+        expireDate: "2028-12-23T13:45:46.311Z",
+        medicineImage: {
+          url: null,
+          publicId: null,
+        },
+        unitPrice: 5,
+        quantity: 100,
+        _id: "6728a343022e1c17cbf1b3b9",
+      },
+    ],
+    expectedDate: "2024-12-01T13:45:46.311Z",
+    totalAmount: 1500,
+    status: "confirmed",
     createdAt: "2024-11-04T10:34:43.852Z",
     updatedAt: "2024-11-04T10:34:43.852Z",
     __v: 0,

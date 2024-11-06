@@ -1,18 +1,22 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const FilterMedicines = ({ activeFilter, setActiveFilter }) => {
-  const filterOptions = ["all", "available", "outStock", "expired"];
+const FilterMedicines = ({
+  queryName,
+  activeFilter,
+  setActiveFilter,
+  filterOptions,
+}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const filter = queryParams.get("medicines") || "all";
+    const filter = queryParams.get(queryName) || "all";
     setActiveFilter(filter);
 
-    if (!queryParams.has("medicines") || !filterOptions.includes(filter)) {
-      queryParams.set("medicines", "all");
+    if (!queryParams.has(queryName) || !filterOptions.includes(filter)) {
+      queryParams.set(queryName, "all");
       navigate(`?${queryParams.toString()}`, { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,7 +25,7 @@ const FilterMedicines = ({ activeFilter, setActiveFilter }) => {
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
     const newQueryParams = new URLSearchParams(location.search);
-    newQueryParams.set("medicines", filter);
+    newQueryParams.set(queryName, filter);
     navigate(`?${newQueryParams.toString()}`, { replace: true });
   };
 

@@ -36,19 +36,19 @@ const Dashboard = () => {
           title={"Orders"}
           number={10}
           color={"var(--gray-color)"}
-          link={"/purshase"}
+          link={"/purshases"}
         />
         <Box
           title={"Confirmed Orders"}
           number={10}
           color={"var(--sky-color)"}
-          link={"/purshase"}
+          link={"/purshases?orders=confirmed"}
         />
         <Box
           title={"Canceled Orders"}
           number={10}
           color={"#ff7a7a"}
-          link={"/purshase"}
+          link={"/purshases?orders=canceled"}
         />
         <Box
           title={"Suppliers"}
