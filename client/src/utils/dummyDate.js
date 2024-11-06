@@ -323,4 +323,529 @@ const suppliers = [
   },
 ];
 
-export { orders, medicines, suppliers };
+const invoices = [
+  {
+    _id: "671e645563562f8573488909",
+    medicines: [
+      {
+        medicineId: {
+          _id: "671933dfef1bc94e5c2cdd49",
+          medicineName: "m12",
+          price: 120,
+        },
+        quantity: 1,
+        _id: "671e645563562f857348890a",
+      },
+      {
+        medicineId: {
+          _id: "67193404ef1bc94e5c2cdd58",
+          medicineName: "m13",
+          price: 120,
+        },
+        quantity: 2,
+        _id: "671e645563562f857348890b",
+      },
+    ],
+    totalAmount: 360,
+    createdAt: "2024-10-27T16:03:33.590Z",
+    updatedAt: "2024-10-27T16:03:33.590Z",
+    __v: 0,
+  },
+  {
+    _id: "671e58ea64f9e83c3509afc3",
+    medicines: [
+      {
+        medicineId: {
+          _id: "671933dfef1bc94e5c2cdd49",
+          medicineName: "m12",
+          price: 120,
+        },
+        quantity: 1,
+        _id: "671e58ea64f9e83c3509afc4",
+      },
+      {
+        medicineId: {
+          _id: "67193404ef1bc94e5c2cdd58",
+          medicineName: "m13",
+          price: 120,
+        },
+        quantity: 1,
+        _id: "671e58ea64f9e83c3509afc5",
+      },
+    ],
+    totalAmount: 240,
+    createdAt: "2024-10-27T15:14:50.609Z",
+    updatedAt: "2024-10-27T15:14:50.609Z",
+    __v: 0,
+  },
+  {
+    _id: "671e58cf64f9e83c3509afbb",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "671e58cf64f9e83c3509afbc",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 2,
+        _id: "671e58cf64f9e83c3509afbd",
+      },
+    ],
+    totalAmount: 60,
+    createdAt: "2024-10-27T15:14:23.313Z",
+    updatedAt: "2024-10-27T15:14:23.313Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fe0a6bf7f78c7e890196",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fe0a6bf7f78c7e890197",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fe0a6bf7f78c7e890198",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:45:46.316Z",
+    updatedAt: "2024-10-23T13:45:46.316Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fdf36bf7f78c7e890188",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fdf36bf7f78c7e890189",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fdf36bf7f78c7e89018a",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:45:23.624Z",
+    updatedAt: "2024-10-23T13:45:23.624Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fdd86bf7f78c7e89017c",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fdd86bf7f78c7e89017d",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fdd86bf7f78c7e89017e",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:44:56.174Z",
+    updatedAt: "2024-10-23T13:44:56.174Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fdbc6bf7f78c7e890172",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fdbc6bf7f78c7e890173",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fdbc6bf7f78c7e890174",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:44:28.749Z",
+    updatedAt: "2024-10-23T13:44:28.749Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fd1a1483f1153ab310af",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fd1a1483f1153ab310b0",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fd1a1483f1153ab310b1",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:41:46.007Z",
+    updatedAt: "2024-10-23T13:41:46.007Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fcfb1483f1153ab310a3",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fcfb1483f1153ab310a4",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fcfb1483f1153ab310a5",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:41:15.973Z",
+    updatedAt: "2024-10-23T13:41:15.973Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fcee1483f1153ab31097",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fcee1483f1153ab31098",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fcee1483f1153ab31099",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:41:02.128Z",
+    updatedAt: "2024-10-23T13:41:02.128Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fce01483f1153ab3108d",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fce01483f1153ab3108e",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fce01483f1153ab3108f",
+      },
+    ],
+    totalAmount: 40,
+    createdAt: "2024-10-23T13:40:48.371Z",
+    updatedAt: "2024-10-23T13:40:48.371Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fc45c3c4512a87cd4fa4",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fc45c3c4512a87cd4fa5",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:38:13.564Z",
+    updatedAt: "2024-10-23T13:38:13.564Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fc33c3c4512a87cd4f9c",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fc33c3c4512a87cd4f9d",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:37:55.312Z",
+    updatedAt: "2024-10-23T13:37:55.312Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fc25c3c4512a87cd4f96",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fc25c3c4512a87cd4f97",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:37:41.618Z",
+    updatedAt: "2024-10-23T13:37:41.618Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fc13c3c4512a87cd4f90",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fc13c3c4512a87cd4f91",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:37:23.467Z",
+    updatedAt: "2024-10-23T13:37:23.467Z",
+    __v: 0,
+  },
+  {
+    _id: "6718fae7787515a67c384c19",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718fae7787515a67c384c1a",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:32:23.081Z",
+    updatedAt: "2024-10-23T13:32:23.081Z",
+    __v: 0,
+  },
+  {
+    _id: "6718f735032d376eb81d0edc",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718f735032d376eb81d0edd",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:16:37.074Z",
+    updatedAt: "2024-10-23T13:16:37.074Z",
+    __v: 0,
+  },
+  {
+    _id: "6718f724bba25a07ddf1c50e",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718f724bba25a07ddf1c50f",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:16:20.568Z",
+    updatedAt: "2024-10-23T13:16:20.568Z",
+    __v: 0,
+  },
+  {
+    _id: "6718f5e7bc0629bb0073f46e",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6718f5e7bc0629bb0073f46f",
+      },
+    ],
+    totalAmount: 20,
+    createdAt: "2024-10-23T13:11:03.224Z",
+    updatedAt: "2024-10-23T13:11:03.224Z",
+    __v: 0,
+  },
+  {
+    _id: "6718f5b1bc0629bb0073f466",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6716666dec661253f17bfe90",
+          medicineName: "m2",
+          price: 300,
+        },
+        quantity: 1,
+        _id: "6718f5b1bc0629bb0073f467",
+      },
+      {
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+        },
+        quantity: 12,
+        _id: "6718f5b1bc0629bb0073f468",
+      },
+    ],
+    totalAmount: 540,
+    createdAt: "2024-10-23T13:10:09.454Z",
+    updatedAt: "2024-10-23T13:10:09.454Z",
+    __v: 0,
+  },
+  {
+    _id: "6717b31dc69d6e59a53ae626",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6716666dec661253f17bfe90",
+          medicineName: "m2",
+          price: 300,
+        },
+        quantity: 2,
+        _id: "6717b31dc69d6e59a53ae627",
+      },
+      {
+        medicineId: {
+          _id: "6717a534352bdfde60b75001",
+          medicineName: "m1",
+          price: 20,
+        },
+        quantity: 2,
+        _id: "6717b31dc69d6e59a53ae628",
+      },
+    ],
+    totalAmount: 1200,
+    createdAt: "2024-10-22T14:13:49.630Z",
+    updatedAt: "2024-10-22T14:13:49.630Z",
+    __v: 0,
+  },
+  {
+    _id: "6717b315c69d6e59a53ae61e",
+    medicines: [
+      {
+        medicineId: {
+          _id: "6716666dec661253f17bfe90",
+          medicineName: "m2",
+          price: 300,
+        },
+        quantity: 2,
+        _id: "6717b315c69d6e59a53ae61f",
+      },
+      {
+        medicineId: {
+          _id: "6717a534352bdfde60b75001",
+          medicineName: "m1",
+          price: 20,
+        },
+        quantity: 1,
+        _id: "6717b315c69d6e59a53ae620",
+      },
+    ],
+    totalAmount: 900,
+    createdAt: "2024-10-22T14:13:41.580Z",
+    updatedAt: "2024-10-22T14:13:41.580Z",
+    __v: 0,
+  },
+];
+
+export { orders, medicines, suppliers, invoices };
