@@ -52,3 +52,17 @@ body.no-scroll {
   margin-top: 20px;
   text-align: center;
 }
+
+.file-background {
+  background: url("./assets/soft-watercolor-effect_1020-970.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.clip-path {
+  clip-path: polygon(76% 0, 100% 25%, 100% 100%, 0 100%, 0 0);
+}
+
+.box-shadow {
+  box-shadow: -12px 12px 11px 0px #00000021;
+}

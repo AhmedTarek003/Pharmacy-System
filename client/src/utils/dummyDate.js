@@ -848,4 +848,85 @@ const invoices = [
   },
 ];
 
-export { orders, medicines, suppliers, invoices };
+const reports = [
+  {
+    _id: "671f817068ba61f8397f92b8",
+    reportType: "Best Selling Medicines",
+    weekStartDate: "2024-10-25T21:00:00.000Z",
+    weekEndDate: "2024-11-01T21:59:59.999Z",
+    bestSellingMedicines: [
+      {
+        medicineId: "6718fcc21483f1153ab31081",
+        quantitySold: 1,
+        _id: "671f817068ba61f8397f92b9",
+      },
+      {
+        medicineId: "6718f583bc0629bb0073f45e",
+        quantitySold: 2,
+        _id: "671f817068ba61f8397f92ba",
+      },
+      {
+        medicineId: "671933dfef1bc94e5c2cdd49",
+        quantitySold: 2,
+        _id: "671f817068ba61f8397f92bb",
+      },
+      {
+        medicineId: "67193404ef1bc94e5c2cdd58",
+        quantitySold: 3,
+        _id: "671f817068ba61f8397f92bc",
+      },
+    ],
+    createdAt: "2024-10-28T12:20:00.825Z",
+    updatedAt: "2024-10-28T12:20:00.825Z",
+    __v: 0,
+  },
+  {
+    _id: "671f817068ba61f8397f92bf",
+    reportType: "Orders",
+    weekStartDate: "2024-10-25T21:00:00.000Z",
+    weekEndDate: "2024-11-01T21:59:59.999Z",
+    weeklyOrdersExports: 2400,
+    monthlyOrdersExports: [
+      {
+        _id: 42,
+        totalOrders: 2400,
+      },
+    ],
+    createdAt: "2024-10-28T12:20:00.829Z",
+    updatedAt: "2024-10-28T12:20:00.829Z",
+    __v: 0,
+  },
+  {
+    _id: "671f817068ba61f8397f92c1",
+    reportType: "Weekly Revenue",
+    weekStartDate: "2024-10-10T21:00:00.000Z",
+    weekEndDate: "2024-10-17T21:59:59.999Z",
+    weekRevenue: 660,
+    monthlyRevenue: [
+      {
+        _id: 42,
+        totalRevenue: 3120,
+      },
+      {
+        _id: 43,
+        totalRevenue: 660,
+      },
+    ],
+    weekCountInvoice: 3,
+    monthlyCountInvoice: [
+      {
+        _id: 42,
+        invoice: 19,
+      },
+      {
+        _id: 43,
+        invoice: 3,
+      },
+    ],
+    createdAt: "2024-09-28T12:20:00.832Z",
+    updatedAt: "2024-10-28T12:20:00.832Z",
+    __v: 0,
+  },
+];
+
+export { orders, medicines, suppliers, invoices, reports };

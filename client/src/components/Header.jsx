@@ -63,14 +63,14 @@ const Header = () => {
           onClick={() => setDropdown(!dropdown)}
         />
         <div
-          className={`absolute bg-white w-full pb-3 rounded-br-md rounded-bl-md h-fit shadow-lg z-40 right-0 ${
+          className={`absolute bg-white w-full pb-3 rounded-br-md rounded-bl-md h-fit shadow-lg right-0 ${
             dropdown ? "md:top-[48px] max-md:top-[63px]" : "-top-96"
           } transition-all`}
         >
           <ul className="mt-5 ml-5">
             <Link
               to={`/users/1212121212121`}
-              className="flex items-center gap-2 text-lg font-semibold"
+              className="flex items-center gap-2 text-lg font-semibold hover:text-gray-700"
             >
               <MdOutlinePerson size={22} /> Profile
             </Link>

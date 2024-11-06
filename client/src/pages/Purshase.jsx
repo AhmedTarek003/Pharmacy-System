@@ -95,7 +95,7 @@ const Purshase = () => {
       <div className="my-5 md:px-5 max-md:px-1">
         <Sort
           options={options}
-          label="Sort Medicines By "
+          label="Sort Purshases By "
           onChange={handleSelectChange}
         />
       </div>
