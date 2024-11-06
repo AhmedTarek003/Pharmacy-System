@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const FilterMedicines = ({ activeFilter, setActiveFilter }) => {
-  const filterOptions = ["all", "available", "expired"];
+  const filterOptions = ["all", "available", "outStock", "expired"];
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -50,38 +50,3 @@ const FilterMedicines = ({ activeFilter, setActiveFilter }) => {
 };
 
 export default FilterMedicines;
-
-// <div className="flex justify-center items-center mt-5">
-// <button
-//   className={`${
-//     activeFilter === "All"
-//       ? "bg-blue-500 text-white"
-//       : "bg-white text-black hover:bg-blue-500 hover:text-white"
-//   } px-2 py-[3px] rounded-tl-md
-// rounded-bl-md border-r `}
-//   onClick={() => handleFilterChange("All")}
-// >
-//   All
-// </button>
-//   <button
-//     className={`${
-//       activeFilter === "Available"
-//         ? "bg-blue-500 text-white"
-//         : "bg-white text-black hover:bg-blue-500 hover:text-white"
-//     } px-2 py-[3px]`}
-//     onClick={() => handleFilterChange("Available")}
-//   >
-//     Available
-//   </button>
-//   <button
-//     className={`${
-//       activeFilter === "Expired"
-//         ? "bg-blue-500 text-white"
-//         : "bg-white text-black hover:bg-blue-500 hover:text-white"
-//     } px-2 py-[3px] rounded-tr-md
-//   rounded-br-md border-l `}
-//     onClick={() => handleFilterChange("Expired")}
-//   >
-//     Expired
-//   </button>
-// </div>;

@@ -202,4 +202,47 @@ const medicines = [
   },
 ];
 
-export { orders, medicines };
+const suppliers = [
+  {
+    _id: "6717d410f7954c9e52c78197",
+    userName: "ahmed",
+    email: "at@gmail.com",
+    phoneNumber: "011238938",
+    address: "cairo",
+    createdAt: "2024-10-22T16:34:24.448Z",
+    updatedAt: "2024-10-22T17:07:01.849Z",
+    __v: 0,
+  },
+  {
+    _id: "6717d7aca49cb73ee80783b7",
+    userName: "ali",
+    email: "ali@gmail.com",
+    phoneNumber: "0102838373",
+    address: "cairo",
+    createdAt: "2024-10-22T16:49:48.765Z",
+    updatedAt: "2024-10-22T17:06:30.351Z",
+    __v: 0,
+  },
+  {
+    _id: "671ce70ce9d1a74dacbecbc7",
+    userName: "Ahmed Tarek",
+    email: "at3616464@gmail.com",
+    phoneNumber: "01065861035",
+    address: "Elmahallah",
+    createdAt: "2024-10-26T12:56:44.991Z",
+    updatedAt: "2024-10-26T12:56:44.991Z",
+    __v: 0,
+  },
+  {
+    _id: "6728a790dafce4cbdea58605",
+    userName: "hamada",
+    email: "at3616@gmail.com",
+    phoneNumber: "01165861035",
+    address: "Alexandria",
+    createdAt: "2024-11-04T10:53:04.153Z",
+    updatedAt: "2024-11-04T10:53:04.153Z",
+    __v: 0,
+  },
+];
+
+export { orders, medicines, suppliers };

@@ -18,19 +18,19 @@ const Dashboard = () => {
           title={"Available Medicines"}
           number={18}
           color={"var(--secondery-color)"}
-          link={"/medicineslist"}
+          link={"/medicineslist?medicines=available"}
         />
         <Box
           title={"Expire Medicines"}
           number={2}
           color={"red"}
-          link={"/medicineslist"}
+          link={"/medicineslist?medicines=expired"}
         />
         <Box
           title={"Out Of Stock Medicines"}
           number={0}
           color={"var(--background-color)"}
-          link={"/medicineslist"}
+          link={"/medicineslist?medicines=outStock"}
         />
         <Box
           title={"Orders"}

@@ -42,7 +42,11 @@ const MedicinesList = () => {
       ),
     },
   ];
-  const options = ["First Added", "Last Added", "Close To Expiration"];
+  const options = [
+    { key: "First Added", value: "createdAt" },
+    { key: "Last Added", value: "-createdAt" },
+    { key: "Close To Expiration", value: "expireDate" },
+  ];
   const handleSelectChange = (selectedOption) => {
     console.log("Selected:", selectedOption);
   };
@@ -52,7 +56,8 @@ const MedicinesList = () => {
     if (activeFilter === "available") {
       setData(() =>
         medicines.filter(
-          (medicine) => medicine.expireDate > new Date().toISOString()
+          (medicine) =>
+            medicine.expireDate > new Date().toISOString() && medicine.stock > 0
         )
       );
     } else if (activeFilter === "expired") {
@@ -61,6 +66,8 @@ const MedicinesList = () => {
           (medicine) => medicine.expireDate < new Date().toISOString()
         )
       );
+    } else if (activeFilter === "outStock") {
+      setData(() => medicines.filter((medicine) => medicine.stock <= 0));
     } else {
       setData(medicines);
     }

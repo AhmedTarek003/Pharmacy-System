@@ -3,15 +3,15 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Sort = ({ options, label, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState(options[0].key);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionClick = (option) => {
-    setSelected(option);
-    onChange(option);
+    setSelected(option.key);
+    onChange(option.value);
     setIsOpen(false);
   };
 
@@ -42,7 +42,7 @@ const Sort = ({ options, label, onChange }) => {
                 onClick={() => handleOptionClick(option)}
                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
-                {option}
+                {option.key}
               </button>
             ))}
           </div>

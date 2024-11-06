@@ -64,7 +64,7 @@ const Header = () => {
         />
         <div
           className={`absolute bg-white w-full pb-3 rounded-br-md rounded-bl-md h-fit shadow-lg z-40 right-0 ${
-            dropdown ? "top-[47px]" : "-top-96"
+            dropdown ? "md:top-[48px] max-md:top-[63px]" : "-top-96"
           } transition-all`}
         >
           <ul className="mt-5 ml-5">

@@ -28,7 +28,7 @@ const Sidebar = () => {
         <div
           className={`absolute top-0 ${
             openMenu ? "left-0" : "-left-96"
-          } z-[98] w-56 h-screen shadow-lg bg-white pt-6`}
+          } z-[98] w-56 h-screen shadow-lg bg-white pt-6 transition-all`}
         >
           <h1 className="text-center mt-5 h1 text-[var(--dark-color)] border-b-2 pb-3 shadow-md">
             Elshfa Pharmacy
