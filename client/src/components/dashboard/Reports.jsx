@@ -1,3 +1,6 @@
+import moment from "moment";
+import { reports } from "../../utils/dummyDate";
+
 const Reports = () => {
   return (
     <div className="bg-white flex-[7] max-h-60 overflow-auto rounded-md p-2 shadow-lg">
@@ -10,19 +13,25 @@ const Reports = () => {
             <tr>
               <th className="px-4 py-2 border-b">ID</th>
               <th className="px-4 py-2 border-b">Report</th>
-              <th className="px-4 py-2 border-b">Expected Date</th>
-              <th className="px-4 py-2 border-b">Total Amount</th>
-              <th className="px-4 py-2 border-b">Status</th>
+              <th className="px-4 py-2 border-b">Start Week</th>
+              <th className="px-4 py-2 border-b">End Week</th>
+              <th className="px-4 py-2 border-b">createdAt</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="text-center">
-              <td className="px-4 py-2 border-b">kdjkdfksdkf</td>
-              <td className="px-4 py-2 border-b">ahmed</td>
-              <td className="px-4 py-2 border-b">dkdkd</td>
-              <td className="px-4 py-2 border-b">30</td>
-              <td className="px-4 py-2 border-b">30</td>
-            </tr>
+            {reports.slice(0, 5)?.map((report, idx) => (
+              <tr className="text-center" key={report?._id}>
+                <td className="px-4 py-2 border-b">{idx + 1}</td>
+                <td className="px-4 py-2 border-b">{report?.reportType}</td>
+                <td className="px-4 py-2 border-b">
+                  {moment(report?.weekStartDate).format("YYYY-MM-DD")}
+                </td>
+                <td className="px-4 py-2 border-b">
+                  {moment(report?.weekEndDate).format("YYYY-MM-DD")}
+                </td>
+                {moment(report?.createdAt).format("YYYY-MM-DD")}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
