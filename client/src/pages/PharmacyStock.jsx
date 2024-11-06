@@ -30,12 +30,7 @@ const PharmacyStock = () => {
       key: "status",
       render: (value) => (
         <span
-          className={`px-2 py-1 rounded-md text-sm ${
-            (value === "pending" && "bg-yellow-200 text-yellow-600") ||
-            (value === "received" && "bg-green-200 text-green-700") ||
-            (value === "confirmed" && "bg-blue-200 text-blue-700") ||
-            (value === "canceled" && "bg-red-200 text-red-600")
-          }`}
+          className={`px-2 py-1 rounded-md text-sm bg-blue-200 text-blue-700`}
         >
           {value}
         </span>
@@ -52,14 +47,16 @@ const PharmacyStock = () => {
           >
             Details
           </Link>
-          <button className="bg-blue-200 text-blue-600 px-3 py-1 text-sm rounded-md">
+          <button className="bg-green-200 text-green-600 px-3 py-1 text-sm rounded-md">
             Add To List
           </button>
         </div>
       ),
     },
   ];
-  const receivedOrders = orders.filter((order) => order.status === "received");
+  const confirmedOrders = orders.filter(
+    (order) => order.status === "confirmed"
+  );
   return (
     <div>
       <div className="page-title">Pharmacy Stock</div>
@@ -70,7 +67,7 @@ const PharmacyStock = () => {
           onChange={handleSelectChange}
         />
       </div>
-      <Table columns={columns} data={receivedOrders} />
+      <Table columns={columns} data={confirmedOrders} />
     </div>
   );
 };
