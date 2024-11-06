@@ -19,7 +19,7 @@ const Suppliers = () => {
         <div className="flex items-center gap-1">
           <Link
             to={`/suppliers/${row._id}`}
-            className="bg-blue-200 text-blue-600 px-3 py-1 text-sm rounded-md cursor-pointer"
+            className="bg-blue-200 text-blue-600 px-3 py-1 text-sm rounded-md"
           >
             Edit
           </Link>

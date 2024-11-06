@@ -65,10 +65,10 @@ const Purshase = () => {
       label: "actions",
       key: "actions",
       render: (_, row) => (
-        <div className="flex items-center gap-1">
+        <div>
           <Link
             to={`/purshases/${row._id}`}
-            className="bg-gray-200 text-gray-600 px-3 py-1 text-sm rounded-md cursor-pointer"
+            className="bg-gray-200 text-gray-600 px-3 py-1 text-sm rounded-md"
           >
             Details
           </Link>
