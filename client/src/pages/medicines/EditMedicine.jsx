@@ -5,7 +5,7 @@ import { useState } from "react";
 import Button from "../../components/ui/Button";
 import { MdCameraAlt } from "react-icons/md";
 
-const SingleMedicine = () => {
+const EditMedicine = () => {
   const medicine = medicines[0];
   const [formValues, setFormValues] = useState({
     medicineName: medicine?.medicineName,
@@ -25,7 +25,7 @@ const SingleMedicine = () => {
   };
   return (
     <div>
-      <div className="page-title">Medicine info</div>
+      <h1 className="page-title">Medicine info</h1>
       <form onSubmit={submitHandler}>
         <div className="flex justify-center max-md:flex-col gap-5 mt-10 p-2">
           <div className="shadow-lg relative w-[380px] h-64 max-md:h-72 max-md:w-[70%] max-md:m-auto">
@@ -111,4 +111,4 @@ const SingleMedicine = () => {
   );
 };
 
-export default SingleMedicine;
+export default EditMedicine;

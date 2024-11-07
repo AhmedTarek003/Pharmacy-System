@@ -42,7 +42,7 @@ const PharmacyStock = () => {
       render: (_, row) => (
         <div className="flex items-center gap-1">
           <Link
-            to={`/purshases/${row._id}`}
+            to={`/purshases/order/${row._id}`}
             className="bg-gray-200 text-gray-600 px-3 py-1 text-sm rounded-md"
           >
             Details

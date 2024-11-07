@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import Sort from "../components/ui/Sort";
-import Table from "../components/ui/Table";
-import { orders } from "../utils/dummyDate";
+import Sort from "../../components/ui/Sort";
+import Table from "../../components/ui/Table";
+import { orders } from "../../utils/dummyDate";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import FilterMedicines from "../components/FilterMedicines";
+import FilterMedicines from "../../components/FilterMedicines";
+import CreateBottom from "../../components/ui/CreateBottom";
 
 const Purshase = () => {
   const [data, setData] = useState(orders);
@@ -67,7 +68,7 @@ const Purshase = () => {
       render: (_, row) => (
         <div>
           <Link
-            to={`/purshases/${row._id}`}
+            to={`/purshases/order/${row._id}`}
             className="bg-gray-200 text-gray-600 px-3 py-1 text-sm rounded-md"
           >
             Details
@@ -79,13 +80,7 @@ const Purshase = () => {
   return (
     <div>
       <div className="page-title">Purshases</div>
-      <Link
-        to={"/purshases/makeorder"}
-        className=" block bg-[var(--background-color)] hover:bg-[var(--secondery-color)]
-      w-fit px-6 py-3 ml-6 rounded-lg text-white uppercase tracking-wider my-5 shadow-lg"
-      >
-        Make Order
-      </Link>
+      <CreateBottom text={"Make Order"} link={"/purshases/makeorder"} />
       <FilterMedicines
         queryName={"orders"}
         activeFilter={activeFilter}

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Sort from "../../components/ui/Sort";
 import FilterMedicines from "../../components/FilterMedicines";
 import { deleteAlert } from "../../utils/deleteAlert";
+import CreateBottom from "../../components/ui/CreateBottom";
 
 const MedicinesList = () => {
   const [data, setData] = useState(medicines);
@@ -76,13 +77,10 @@ const MedicinesList = () => {
   return (
     <div>
       <div className="page-title">Medicines List</div>
-      <Link
-        to={"/medicineslist/addnewmedincine"}
-        className=" block bg-[var(--background-color)] hover:bg-[var(--secondery-color)]
-      w-fit px-6 py-3 ml-6 rounded-lg text-white uppercase tracking-wider my-5 shadow-lg"
-      >
-        Add New Medicine
-      </Link>
+      <CreateBottom
+        text={"Add New Medicine"}
+        link={"/medicineslist/addnewmedincine"}
+      />
       <FilterMedicines
         queryName={"medicines"}
         activeFilter={activeFilter}

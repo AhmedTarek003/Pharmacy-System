@@ -4,13 +4,16 @@ import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import PharmacyStock from "./pages/PharmacyStock";
 import MedicinesList from "./pages/medicines/MedicinesList";
-import Purshase from "./pages/Purshase";
-import Suppliers from "./pages/Suppliers";
+import Purshase from "./pages/purshase/Purshase";
+import Suppliers from "./pages/suppliers/Suppliers";
 import Reports from "./pages/Reports";
 import Invoices from "./pages/Invoices";
 import Dashboard from "./pages/Dashboard";
-import SingleMedicine from "./pages/medicines/SingleMedicine";
+import EditMedicine from "./pages/medicines/EditMedicine";
 import AddMedicine from "./pages/medicines/AddMedicine";
+import OrderDetails from "./pages/purshase/OrderDetails";
+import EditSupplier from "./pages/suppliers/EditSupplier";
+import AddSupplier from "./pages/suppliers/AddSupplier";
 
 function App() {
   return (
@@ -23,16 +26,16 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="pharmacystock" element={<PharmacyStock />} />
           <Route path="medicineslist" element={<MedicinesList />} />
-          <Route
-            path="medicineslist/medicine/:id"
-            element={<SingleMedicine />}
-          />
+          <Route path="medicineslist/medicine/:id" element={<EditMedicine />} />
           <Route
             path="medicineslist/addnewmedincine"
             element={<AddMedicine />}
           />
           <Route path="purshases" element={<Purshase />} />
+          <Route path="purshases/order/:id" element={<OrderDetails />} />
           <Route path="suppliers" element={<Suppliers />} />
+          <Route path="suppliers/addnewsupplier" element={<AddSupplier />} />
+          <Route path="suppliers/:id" element={<EditSupplier />} />
           <Route path="invoices" element={<Invoices />} />
           <Route path="reports" element={<Reports />} />
         </Route>

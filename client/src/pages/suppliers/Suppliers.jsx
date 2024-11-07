@@ -1,9 +1,10 @@
 import { useState } from "react";
-import SearchInput from "../components/ui/SearchInput";
-import Table from "../components/ui/Table";
-import { deleteAlert } from "../utils/deleteAlert";
-import { suppliers } from "../utils/dummyDate";
+import SearchInput from "../../components/ui/SearchInput";
+import Table from "../../components/ui/Table";
+import { deleteAlert } from "../../utils/deleteAlert";
+import { suppliers } from "../../utils/dummyDate";
 import { Link } from "react-router-dom";
+import CreateBottom from "../../components/ui/CreateBottom";
 
 const Suppliers = () => {
   const [search, setSearch] = useState("");
@@ -36,6 +37,10 @@ const Suppliers = () => {
   return (
     <div>
       <div className="page-title">Suppliers</div>
+      <CreateBottom
+        text={"Add New Supplier"}
+        link={"/suppliers/addnewsupplier"}
+      />
       <div className="my-5 max-md:gap-3 md:px-5 max-md:px-1">
         <SearchInput search={search} setSearch={setSearch} />
       </div>

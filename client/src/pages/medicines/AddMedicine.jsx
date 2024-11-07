@@ -22,7 +22,7 @@ const AddMedicine = () => {
   };
   return (
     <div>
-      <div className="page-title">Add New Medicine</div>
+      <h1 className="page-title">Add New Medicine</h1>
       <form onSubmit={submitHandler}>
         <div className="flex justify-center max-md:flex-col gap-5 mt-10 p-2">
           <div className="shadow-lg relative w-[380px] h-64 max-md:h-72 max-md:w-[70%] max-md:m-auto">
