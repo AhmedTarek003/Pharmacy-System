@@ -3,7 +3,7 @@ const Button = ({ text }) => {
     <div className="flex">
       <button
         className="bg-blue-300 hover:bg-blue-400 cursor-pointer py-[6px] px-7 text-lg rounded-md
-    font-semibold mx-auto my-3 text-white"
+    font-semibold mx-auto my-3 text-white focus:outline-none"
       >
         {text}
       </button>

@@ -8,6 +8,7 @@ const FormField = ({ label, type, name, placeholder, value, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        min={0}
         className="focus:outline-none p-[7px] rounded-md"
       />
     </div>

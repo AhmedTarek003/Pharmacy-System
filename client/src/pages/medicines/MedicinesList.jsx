@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Table from "../components/ui/Table";
-import { medicines } from "../utils/dummyDate";
+import Table from "../../components/ui/Table";
+import { medicines } from "../../utils/dummyDate";
 import moment from "moment";
-import SearchInput from "../components/ui/SearchInput";
+import SearchInput from "../../components/ui/SearchInput";
 import { Link } from "react-router-dom";
-import Sort from "../components/ui/Sort";
-import FilterMedicines from "../components/FilterMedicines";
-import { deleteAlert } from "../utils/deleteAlert";
+import Sort from "../../components/ui/Sort";
+import FilterMedicines from "../../components/FilterMedicines";
+import { deleteAlert } from "../../utils/deleteAlert";
 
 const MedicinesList = () => {
   const [data, setData] = useState(medicines);
@@ -57,7 +57,7 @@ const MedicinesList = () => {
       render: (_, row) => (
         <div className="flex items-center gap-1">
           <Link
-            to={`/medicineslist/${row._id}`}
+            to={`/medicineslist/medicine/${row._id}`}
             className="bg-blue-200 text-blue-600 px-3 py-1 text-sm rounded-md"
           >
             Edit
@@ -76,6 +76,13 @@ const MedicinesList = () => {
   return (
     <div>
       <div className="page-title">Medicines List</div>
+      <Link
+        to={"/medicineslist/addnewmedincine"}
+        className=" block bg-[var(--background-color)] hover:bg-[var(--secondery-color)]
+      w-fit px-6 py-3 ml-6 rounded-lg text-white uppercase tracking-wider my-5 shadow-lg"
+      >
+        Add New Medicine
+      </Link>
       <FilterMedicines
         queryName={"medicines"}
         activeFilter={activeFilter}
