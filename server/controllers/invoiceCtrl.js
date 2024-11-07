@@ -61,10 +61,11 @@ exports.createInvoiceCtrl = async (req, res) => {
 };
 
 exports.getAllInvoicesCtrl = async (req, res) => {
+  const sort = req.query.sort || "-createdAt";
   try {
     const invoices = await Invoice.find()
       .populate("medicines.medicineId", ["medicineName", "price"])
-      .sort("-createdAt");
+      .sort(sort);
     res.status(200).json(invoices);
   } catch (error) {
     console.error(error);
