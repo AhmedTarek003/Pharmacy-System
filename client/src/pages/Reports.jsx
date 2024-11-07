@@ -5,6 +5,7 @@ import FormField from "../components/ui/FormField";
 import { reports } from "../utils/dummyDate";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { FaFilePdf } from "react-icons/fa";
 
 const Reports = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -70,34 +71,39 @@ const Reports = () => {
           <Link
             to={`/reports/${report?._id}`}
             key={report?._id}
-            className="box-shadow rounded-md"
+            className="relative max-md:w-fit w-44 h-48 bg-white border border-gray-300 rounded-lg shadow-lg py-4 px-1
+            cursor-pointer hover:shadow-xl transition-all duration-200 transform hover:scale-105"
           >
-            <div className="file-background text-center md:w-40 max-md:w-32 md:h-48 max-md:h-36 p-1 clip-path relative rounded-md cursor-pointer">
-              <div className="w-10 h-10 bg-[#ccc] absolute -right-2 rotate-90 shadow-md"></div>
-              <div className="pt-10 max-md:pt-3">
-                <div
-                  className="whitespace-nowrap text-[var(--sky-color)] font-semibold"
-                  title={report?.reportType}
-                >
-                  {report?.reportType}
-                </div>
-                <div className="md:text-sm max-md:text-[12px] mt-3 max-md:mt-1 ml-2">
-                  From :{" "}
-                  <span className="text-red-400">
+            <div
+              className="absolute top-0 right-0 w-10 h-10 bg-blue-500 rounded-br-lg transform
+            rotate-45 translate-x-2 translate-y-2"
+            ></div>
+            <div className="flex justify-center items-center text-blue-500 text-4xl">
+              <FaFilePdf />
+            </div>
+            <div className="text-xs text-center mt-3">
+              <h2 className="text-[16px] whitespace-nowrap text-sky-600 font-semibold">
+                {report?.reportType}
+              </h2>
+              <div className="mt-4 text-left ml-2">
+                <div className="text-sm whitespace-nowrap">
+                  start week :{" "}
+                  <span className="text-red-400 font-semibold">
                     {moment(report?.weekStartDate).format("YYYY-MM-DD")}
-                  </span>{" "}
-                  <br />
-                  To :{" "}
-                  <span className="text-red-400">
+                  </span>
+                </div>
+                <div className="text-sm whitespace-nowrap">
+                  end week :{" "}
+                  <span className="text-red-400 font-semibold">
                     {moment(report?.weekEndDate).format("YYYY-MM-DD")}
                   </span>
                 </div>
-                <div className="mt-5 md:text-sm max-md:text-[12px]">
-                  Created :{" "}
-                  <span className="font-semibold text-[var(--secondery-color)]">
-                    {moment(report?.createdAt).format("YYYY-MM-DD")}
-                  </span>
-                </div>
+              </div>
+              <div className="text-[15px] whitespace-nowrap mt-5">
+                created :{" "}
+                <span className="text-[var(--secondery-color)] font-semibold">
+                  {moment(report?.createdAt).format("YYYY-MM-DD")}
+                </span>
               </div>
             </div>
           </Link>
