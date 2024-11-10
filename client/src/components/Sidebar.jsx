@@ -34,9 +34,10 @@ const Sidebar = () => {
             Elshfa Pharmacy
           </h1>
           <Link
-            to={"/invocies/create_invoice"}
+            to={"/invoices/create_invoice"}
             className="block text-center bg-[var(--background-color)] hover:bg-[var(--secondery-color)]
       text-white p-[9px] mt-3 text-[20px] rounded-md shadow-md transition-all"
+            onClick={() => setOpenMenu(false)}
           >
             create invoice
           </Link>
@@ -113,7 +114,7 @@ const Sidebar = () => {
           Elshfa Pharmacy
         </h1>
         <Link
-          to={"/invocies/create_invoice"}
+          to={"/invoices/create_invoice"}
           className="block text-center bg-[var(--background-color)] hover:bg-[var(--secondery-color)]
       text-white p-[9px] mt-3 text-[20px] rounded-md shadow-md transition-all"
         >

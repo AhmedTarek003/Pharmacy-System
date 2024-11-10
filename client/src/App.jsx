@@ -7,13 +7,15 @@ import MedicinesList from "./pages/medicines/MedicinesList";
 import Purshase from "./pages/purshase/Purshase";
 import Suppliers from "./pages/suppliers/Suppliers";
 import Reports from "./pages/Reports";
-import Invoices from "./pages/Invoices";
+import Invoices from "./pages/invoice/Invoices";
 import Dashboard from "./pages/Dashboard";
 import EditMedicine from "./pages/medicines/EditMedicine";
 import AddMedicine from "./pages/medicines/AddMedicine";
 import OrderDetails from "./pages/purshase/OrderDetails";
 import EditSupplier from "./pages/suppliers/EditSupplier";
 import AddSupplier from "./pages/suppliers/AddSupplier";
+import SingleInvoice from "./pages/invoice/SingleInvoice";
+import CreateInvoice from "./pages/invoice/CreateInvoice";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           <Route path="suppliers/addnewsupplier" element={<AddSupplier />} />
           <Route path="suppliers/:id" element={<EditSupplier />} />
           <Route path="invoices" element={<Invoices />} />
+          <Route path="invoices/create_invoice" element={<CreateInvoice />} />
+          <Route path="invoices/:id" element={<SingleInvoice />} />
           <Route path="reports" element={<Reports />} />
         </Route>
       </Routes>

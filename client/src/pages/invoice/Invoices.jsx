@@ -1,7 +1,7 @@
 import moment from "moment";
-import Sort from "../components/ui/Sort";
-import Table from "../components/ui/Table";
-import { invoices } from "../utils/dummyDate";
+import Sort from "../../components/ui/Sort";
+import Table from "../../components/ui/Table";
+import { invoices } from "../../utils/dummyDate";
 import { Link } from "react-router-dom";
 
 const Invoices = () => {

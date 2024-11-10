@@ -29,7 +29,9 @@ const Reports = () => {
                 <td className="px-4 py-2 border-b">
                   {moment(report?.weekEndDate).format("YYYY-MM-DD")}
                 </td>
-                {moment(report?.createdAt).format("YYYY-MM-DD")}
+                <td className="px-4 py-2 border-b">
+                  {moment(report?.createdAt).format("YYYY-MM-DD")}
+                </td>
               </tr>
             ))}
           </tbody>
