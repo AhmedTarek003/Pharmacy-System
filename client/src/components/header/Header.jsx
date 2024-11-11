@@ -46,14 +46,6 @@ const Header = () => {
           <RiNotification2Line size={23} color="var(--gray-color)" />
           <span className="block absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></span>
         </div>
-        <div>
-          <img
-            src="https://avatar.iran.liara.run/public"
-            alt="profile picture"
-            width={38}
-            className="max-md:hidden"
-          />
-        </div>
         <div className="flex flex-col items-center md:mx-2 p-0">
           <span className="text-[15px] max-md:text-[13px] font-semibold">
             Ahmed Tarek
@@ -70,7 +62,9 @@ const Header = () => {
           onClick={() => setDropdown(!dropdown)}
         />
         <More dropdown={dropdown} />
-        {openNotifications && <Notifications />}
+        {openNotifications && (
+          <Notifications setOpenNotifications={setOpenNotifications} />
+        )}
       </div>
     </div>
   );

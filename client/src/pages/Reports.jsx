@@ -31,27 +31,28 @@ const Reports = () => {
   const handleSelectChange = (selectedOption) => {
     console.log("Selected:", selectedOption);
   };
+
   return (
-    <div>
-      <div className="page-title">Medicines List</div>
-      <div className="my-5 flex items-center max-md:gap-3 justify-between md:px-5 max-md:px-1">
-        <div>
+    <div className="px-4 py-6 bg-gray-50 min-h-screen">
+      <div className="text-2xl font-semibold text-gray-800 mb-6">Reports</div>
+      <div className="my-5 md:flex items-center justify-between md:px-5 max-md:px-1">
+        <div className="max-md:mb-3">
           <CheckBox
             label={"Select Specific Date"}
             toggleChecked={toggleChecked}
             checked={isChecked}
           />
           {isChecked && (
-            <div className="flex items-center md:gap-3 max-md:flex-col mt-1">
+            <div className="flex items-center gap-3 mt-2">
               <FormField
-                label={"startDate"}
+                label={"Start Date"}
                 type={"date"}
                 name={"startDate"}
                 value={dates.startDate}
                 onChange={handleChange}
               />
               <FormField
-                label={"endDate"}
+                label={"End Date"}
                 type={"date"}
                 name={"endDate"}
                 value={dates.endDate}
@@ -62,7 +63,7 @@ const Reports = () => {
         </div>
         <Sort
           options={options}
-          label="Sort Reports By "
+          label="Sort Reports By"
           onChange={handleSelectChange}
         />
       </div>
@@ -71,38 +72,31 @@ const Reports = () => {
           <Link
             to={`/reports/${report?._id}`}
             key={report?._id}
-            className="relative max-md:w-fit w-44 h-48 bg-white border border-gray-300 rounded-lg shadow-lg py-4 px-1
-            cursor-pointer hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+            className="relative w-60 h-72 bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
           >
-            <div
-              className="absolute top-0 right-0 w-10 h-10 bg-blue-500 rounded-br-lg transform
-            rotate-45 translate-x-2 translate-y-2"
-            ></div>
-            <div className="flex justify-center items-center text-blue-500 text-4xl">
+            <div className="absolute top-0 right-0 w-12 h-12 bg-blue-500 rounded-br-lg transform rotate-45 translate-x-3 translate-y-3"></div>
+            <div className="flex justify-center items-center text-blue-500 text-5xl py-6">
               <FaFilePdf />
             </div>
-            <div className="text-xs text-center mt-3">
-              <h2 className="text-[16px] whitespace-nowrap text-sky-600 font-semibold">
+            <div className="px-4 pb-4 text-center">
+              <h2 className="text-lg font-semibold text-sky-600 mb-2">
                 {report?.reportType}
               </h2>
-              <div className="mt-4 text-left ml-2">
-                <div className="text-sm whitespace-nowrap">
-                  start week :{" "}
-                  <span className="text-red-400 font-semibold">
-                    {moment(report?.weekStartDate).format("YYYY-MM-DD")}
-                  </span>
+              <div className="text-sm text-gray-600">
+                <div>
+                  <span className="font-semibold text-red-500">
+                    Start Week:
+                  </span>{" "}
+                  {moment(report?.weekStartDate).format("YYYY-MM-DD")}
                 </div>
-                <div className="text-sm whitespace-nowrap">
-                  end week :{" "}
-                  <span className="text-red-400 font-semibold">
-                    {moment(report?.weekEndDate).format("YYYY-MM-DD")}
-                  </span>
+                <div>
+                  <span className="font-semibold text-red-500">End Week:</span>{" "}
+                  {moment(report?.weekEndDate).format("YYYY-MM-DD")}
                 </div>
               </div>
-              <div className="text-[15px] whitespace-nowrap mt-5">
-                created :{" "}
-                <span className="text-[var(--secondery-color)] font-semibold">
-                  {moment(report?.createdAt).format("YYYY-MM-DD")}
+              <div className="mt-4 text-sm text-gray-500">
+                <span className="font-semibold text-secondary">
+                  Created: {moment(report?.createdAt).format("YYYY-MM-DD")}
                 </span>
               </div>
             </div>

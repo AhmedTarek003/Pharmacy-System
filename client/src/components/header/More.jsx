@@ -1,5 +1,4 @@
-import { MdOutlineLogout, MdOutlinePerson } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { MdOutlineLogout } from "react-icons/md";
 
 const More = ({ dropdown }) => {
   return (
@@ -9,12 +8,6 @@ const More = ({ dropdown }) => {
       } transition-all`}
     >
       <ul className="mt-5 ml-5">
-        <Link
-          to={`/users/1212121212121`}
-          className="flex items-center gap-2 text-lg font-semibold hover:text-gray-700"
-        >
-          <MdOutlinePerson size={22} /> Profile
-        </Link>
         <div className="border-t pt-2 mt-3">
           <div
             className="w-fit flex items-center gap-2 text-lg font-semibold

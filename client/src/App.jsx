@@ -16,6 +16,7 @@ import EditSupplier from "./pages/suppliers/EditSupplier";
 import AddSupplier from "./pages/suppliers/AddSupplier";
 import SingleInvoice from "./pages/invoice/SingleInvoice";
 import CreateInvoice from "./pages/invoice/CreateInvoice";
+import MakeOrder from "./pages/purshase/MakeOrder";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           />
           <Route path="purshases" element={<Purshase />} />
           <Route path="purshases/order/:id" element={<OrderDetails />} />
+          <Route path="purshases/makeorder" element={<MakeOrder />} />
           <Route path="suppliers" element={<Suppliers />} />
           <Route path="suppliers/addnewsupplier" element={<AddSupplier />} />
           <Route path="suppliers/:id" element={<EditSupplier />} />
