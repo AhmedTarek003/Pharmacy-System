@@ -7,9 +7,17 @@ const hpp = require("hpp");
 const helmet = require("helmet");
 const { rateLimiter } = require("./middlewares/rateLimiterHandler");
 // const mongosanitize = require("express-mongo-sanitize");
+const cors = require("cors");
 
 connectDB();
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(express.json({ limit: "10kb" }));

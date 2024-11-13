@@ -50,7 +50,7 @@ exports.addMedicineCtrl = async (req, res) => {
 
 exports.getAllMedicinesCtrl = async (req, res) => {
   const search = req.query.search || "";
-  const sort = req.query.sort || "createdAt";
+  const sort = req.query.sort || "-createdAt";
   try {
     const medicines = await Medicine.find({
       medicineName: { $regex: search, $options: "i" },

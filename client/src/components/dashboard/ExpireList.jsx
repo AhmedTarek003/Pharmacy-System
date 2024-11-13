@@ -1,7 +1,10 @@
 import moment from "moment";
-import { medicines } from "../../utils/dummyDate";
+import useGetAllMedicines from "../../hooks/medicine/useGetAllMedicines";
+import { useSelector } from "react-redux";
 
 const ExpireList = () => {
+  useGetAllMedicines("");
+  const { medicines } = useSelector((state) => state.medicine);
   const expireMedicines = medicines?.filter(
     (medicine) => medicine.expireDate < new Date().toISOString()
   );

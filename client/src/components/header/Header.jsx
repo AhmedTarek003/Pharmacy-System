@@ -2,9 +2,11 @@ import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RiNotification2Line, RiSearch2Line } from "react-icons/ri";
 import SearchItems from "./../SearchItems";
-import { medicines } from "../../utils/dummyDate";
 import Notifications from "./Notifications";
 import More from "./More";
+import { useSelector } from "react-redux";
+import useGetUser from "../../hooks/user/useGetUser";
+import useGetAllMedicines from "../../hooks/medicine/useGetAllMedicines";
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +14,12 @@ const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [openNotifications, setOpenNotifications] = useState(false);
 
+  useGetAllMedicines("");
+  const { medicines } = useSelector((state) => state.medicine);
   const inStockMedicines = medicines?.filter((medicine) => medicine?.stock > 0);
+
+  useGetUser();
+  const { user } = useSelector((state) => state.user);
 
   return (
     <div
@@ -47,11 +54,11 @@ const Header = () => {
           <span className="block absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></span>
         </div>
         <div className="flex flex-col items-center md:mx-2 p-0">
-          <span className="text-[15px] max-md:text-[13px] font-semibold">
-            Ahmed Tarek
+          <span className="text-[15px] max-md:text-[13px] font-semibold capitalize">
+            {user?.userName}
           </span>
-          <span className="text-[var(--gray-color)] text-sm max-md:text-[12px] font-semibold">
-            Manger
+          <span className="text-[var(--gray-color)] text-sm max-md:text-[12px] font-semibold capitalize">
+            {user?.role}
           </span>
         </div>
         <MdKeyboardArrowDown

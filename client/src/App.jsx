@@ -17,14 +17,30 @@ import AddSupplier from "./pages/suppliers/AddSupplier";
 import SingleInvoice from "./pages/invoice/SingleInvoice";
 import CreateInvoice from "./pages/invoice/CreateInvoice";
 import MakeOrder from "./pages/purshase/MakeOrder";
+import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import useGetUser from "./hooks/user/useGetUser";
 
 function App() {
+  useGetUser();
+  const { user } = useSelector((state) => state.user);
+
+  const lastPath = localStorage.getItem("path")
+    ? localStorage.getItem("path")
+    : "/";
+
   return (
     <div>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<Home />}>
+        <Route
+          path="/login"
+          element={user ? <Navigate to={lastPath} /> : <Login />}
+        />
+        <Route
+          path="/signup"
+          element={user ? <Navigate to={lastPath} /> : <SignUp />}
+        />
+        <Route path="/" element={!user ? <Navigate to={"/login"} /> : <Home />}>
           <Route index element={<Navigate to={"/dashboard"} replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="pharmacystock" element={<PharmacyStock />} />
@@ -46,6 +62,7 @@ function App() {
           <Route path="reports" element={<Reports />} />
         </Route>
       </Routes>
+      <Toaster />
     </div>
   );
 }

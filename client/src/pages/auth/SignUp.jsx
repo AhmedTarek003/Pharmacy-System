@@ -2,6 +2,8 @@ import { useState } from "react";
 import FormField from "../../components/ui/FormField";
 import Button from "../../components/ui/Button";
 import { Link } from "react-router-dom";
+import useRegister from "../../hooks/user/useRegister";
+import Loader from "../../components/ui/Loader";
 
 const SignUp = () => {
   const [formValues, setFormValues] = useState({
@@ -14,9 +16,10 @@ const SignUp = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  const submitHanlder = (e) => {
+  const { register, loading } = useRegister();
+  const submitHanlder = async (e) => {
     e.preventDefault();
-    console.log(formValues);
+    await register(formValues);
   };
   return (
     <div className="h-svh w-full auth-background">
@@ -61,7 +64,7 @@ const SignUp = () => {
               value={formValues.confirmPassword}
               onChange={onChangeHandler}
             />
-            <Button text={"signup"} />
+            <Button text={loading ? <Loader /> : "signup"} />
           </form>
           <div className="text-white">
             already have an account?{" "}

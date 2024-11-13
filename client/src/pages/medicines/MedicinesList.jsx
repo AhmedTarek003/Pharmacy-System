@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Table from "../../components/ui/Table";
-import { medicines } from "../../utils/dummyDate";
 import moment from "moment";
 import SearchInput from "../../components/ui/SearchInput";
 import { Link } from "react-router-dom";
@@ -8,9 +7,32 @@ import Sort from "../../components/ui/Sort";
 import FilterMedicines from "../../components/FilterMedicines";
 import { deleteAlert } from "../../utils/deleteAlert";
 import CreateBottom from "../../components/ui/CreateBottom";
+import useGetAllMedicines from "../../hooks/medicine/useGetAllMedicines";
+import { useSelector } from "react-redux";
+import Loader from "../../components/ui/Loader";
+import useDeleteMedicine from "../../hooks/medicine/useDeleteMedicine";
+import Loading from "../../components/ui/Loading";
 
 const MedicinesList = () => {
+  const [search, setSearch] = useState("");
+  const options = [
+    { key: "Last Added", value: "-createdAt" },
+    { key: "First Added", value: "createdAt" },
+    { key: "Close To Expiration", value: "expireDate" },
+  ];
+  const [sort, setSort] = useState("");
+  const handleSelectChange = (selectedOption) => {
+    setSort(selectedOption);
+  };
+  const { loading } = useGetAllMedicines(search, sort);
+  const { medicines } = useSelector((state) => state.medicine);
   const [data, setData] = useState(medicines);
+  useEffect(() => {
+    if (medicines.length) {
+      setData(medicines);
+    }
+  }, [medicines]);
+
   const filterOptions = ["all", "available", "outStock", "expired"];
   const [activeFilter, setActiveFilter] = useState("all");
   useEffect(() => {
@@ -32,16 +54,10 @@ const MedicinesList = () => {
     } else {
       setData(medicines);
     }
-  }, [activeFilter]);
-  const [search, setSearch] = useState("");
-  const options = [
-    { key: "First Added", value: "createdAt" },
-    { key: "Last Added", value: "-createdAt" },
-    { key: "Close To Expiration", value: "expireDate" },
-  ];
-  const handleSelectChange = (selectedOption) => {
-    console.log("Selected:", selectedOption);
-  };
+  }, [activeFilter, medicines]);
+
+  const { loading: deleteLoading, deleteMedicine } = useDeleteMedicine();
+
   const columns = [
     { label: "Medicine Name", key: "medicineName" },
     { label: "Company", key: "company" },
@@ -65,7 +81,7 @@ const MedicinesList = () => {
           </Link>
           <div
             className="bg-red-200 text-red-600 px-3 py-1 text-sm rounded-md cursor-pointer"
-            onClick={() => deleteAlert()}
+            onClick={() => deleteAlert(deleteMedicine, row._id)}
           >
             delete
           </div>
@@ -96,6 +112,8 @@ const MedicinesList = () => {
         />
       </div>
       <Table columns={columns} data={data} />
+      {loading && <Loader />}
+      {deleteLoading && <Loading />}
     </div>
   );
 };

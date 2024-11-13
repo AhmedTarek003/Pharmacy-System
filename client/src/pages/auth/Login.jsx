@@ -2,6 +2,8 @@ import { useState } from "react";
 import FormField from "../../components/ui/FormField";
 import Button from "../../components/ui/Button";
 import { Link } from "react-router-dom";
+import useLogin from "../../hooks/user/useLogin";
+import Loader from "../../components/ui/Loader";
 
 const Login = () => {
   const [formValues, setFormValues] = useState({
@@ -12,9 +14,11 @@ const Login = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  const submitHanlder = (e) => {
+
+  const { login, loading } = useLogin();
+  const submitHanlder = async (e) => {
     e.preventDefault();
-    console.log(formValues);
+    await login(formValues);
   };
   return (
     <div className="h-svh w-full auth-background">
@@ -43,7 +47,7 @@ const Login = () => {
               value={formValues.password}
               onChange={onChangeHandler}
             />
-            <Button text={"login"} />
+            <Button text={loading ? <Loader /> : "Login"} />
           </form>
           <div className="text-white">
             create new user?{" "}

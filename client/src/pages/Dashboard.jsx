@@ -1,34 +1,48 @@
+import { useSelector } from "react-redux";
 import ExpireList from "../components/dashboard/ExpireList";
 import RecentOrders from "../components/dashboard/RecentOrders";
 import Reports from "../components/dashboard/Reports";
 import Suppliers from "../components/dashboard/Suppliers";
 import Box from "../components/ui/Box";
+import useGetAllMedicines from "../hooks/medicine/useGetAllMedicines";
 
 const Dashboard = () => {
+  useGetAllMedicines("");
+  const { medicines } = useSelector((state) => state.medicine);
+  const expireMedicines = medicines?.filter(
+    (medicine) => medicine.expireDate < new Date().toISOString()
+  );
+  const availableMedicines = medicines?.filter(
+    (medicine) =>
+      medicine.expireDate > new Date().toISOString() && medicine.stock > 0
+  );
+  const outStockMedicines = medicines?.filter(
+    (medicine) => medicine.stock <= 0
+  );
   return (
     <div className="p-5">
       <div className="flex flex-wrap gap-3 justify-center">
         <Box
           title={"Medicines"}
-          number={20}
+          number={medicines?.length}
           color={"var(--sky-color)"}
           link={"/medicineslist"}
         />
         <Box
           title={"Available Medicines"}
-          number={18}
+          number={availableMedicines?.length}
           color={"var(--secondery-color)"}
           link={"/medicineslist?medicines=available"}
         />
         <Box
           title={"Expire Medicines"}
-          number={2}
+          number={expireMedicines?.length}
           color={"red"}
           link={"/medicineslist?medicines=expired"}
         />
         <Box
           title={"Out Of Stock Medicines"}
-          number={0}
+          number={outStockMedicines?.length}
           color={"var(--background-color)"}
           link={"/medicineslist?medicines=outStock"}
         />
