@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SearchInput from "../../components/ui/SearchInput";
 import Table from "../../components/ui/Table";
-import { deleteAlert } from "../../utils/deleteAlert";
+import { deleteAlert } from "../../utils/alerts";
 import { Link } from "react-router-dom";
 import CreateBottom from "../../components/ui/CreateBottom";
 import useGetAllSuppliers from "../../hooks/supplier/useGetAllSuppliers";

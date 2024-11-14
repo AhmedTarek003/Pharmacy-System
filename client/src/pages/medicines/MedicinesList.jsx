@@ -5,7 +5,7 @@ import SearchInput from "../../components/ui/SearchInput";
 import { Link } from "react-router-dom";
 import Sort from "../../components/ui/Sort";
 import FilterMedicines from "../../components/FilterMedicines";
-import { deleteAlert } from "../../utils/deleteAlert";
+import { deleteAlert } from "../../utils/alerts";
 import CreateBottom from "../../components/ui/CreateBottom";
 import useGetAllMedicines from "../../hooks/medicine/useGetAllMedicines";
 import { useSelector } from "react-redux";

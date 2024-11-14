@@ -1,14 +1,33 @@
 import { useEffect, useState } from "react";
 import Sort from "../../components/ui/Sort";
 import Table from "../../components/ui/Table";
-import { orders } from "../../utils/dummyDate";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import FilterMedicines from "../../components/FilterMedicines";
 import CreateBottom from "../../components/ui/CreateBottom";
+import useGetAllOrders from "../../hooks/order/useGetAllOrders";
+import { useSelector } from "react-redux";
+import Loader from "../../components/ui/Loader";
 
 const Purshase = () => {
+  const [sort, setSort] = useState("");
+  const options = [
+    { key: "Last Added", value: "-createdAt" },
+    { key: "First Added", value: "createdAt" },
+  ];
+  const handleSelectChange = (selectedOption) => {
+    setSort(selectedOption);
+  };
+
+  const { loading } = useGetAllOrders(sort);
+  const { orders } = useSelector((state) => state.order);
   const [data, setData] = useState(orders);
+  useEffect(() => {
+    if (orders.length) {
+      setData(orders);
+    }
+  }, [orders]);
+
   const filterOptions = ["all", "pending", "confirmed", "received", "canceled"];
   const [activeFilter, setActiveFilter] = useState("all");
   useEffect(() => {
@@ -23,15 +42,7 @@ const Purshase = () => {
     } else {
       setData(orders);
     }
-  }, [activeFilter]);
-
-  const options = [
-    { key: "First Added", value: "createdAt" },
-    { key: "Last Added", value: "-createdAt" },
-  ];
-  const handleSelectChange = (selectedOption) => {
-    console.log("Selected:", selectedOption);
-  };
+  }, [activeFilter, orders]);
 
   const columns = [
     { label: "order", key: "_id" },
@@ -43,6 +54,11 @@ const Purshase = () => {
     {
       label: "Expected Date",
       key: "expectedDate",
+      render: (value) => moment(value).format("YYYY-MM-DD"),
+    },
+    {
+      label: "created Date",
+      key: "createdAt",
       render: (value) => moment(value).format("YYYY-MM-DD"),
     },
     { label: "Total Amount", key: "totalAmount" },
@@ -95,6 +111,7 @@ const Purshase = () => {
         />
       </div>
       <Table columns={columns} data={data} />
+      {loading && <Loader />}
     </div>
   );
 };

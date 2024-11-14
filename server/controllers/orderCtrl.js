@@ -129,7 +129,7 @@ exports.createOrderCtrl = async (req, res) => {
 };
 
 exports.getAllOrdersCtrl = async (req, res) => {
-  const sort = req.query.sort || "createdAt";
+  const sort = req.query.sort || "-createdAt";
   try {
     const orders = await Order.find()
       .sort(sort)
@@ -207,7 +207,7 @@ exports.updateOrderCtrl = async (req, res) => {
     if (!order) return res.status(404).json({ msg: "order not found" });
     order.status = status || "pending";
     await order.save();
-    res.status(200).json(order);
+    res.status(200).json({ order, msg: "changed order status successfully." });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "error updating order" });
