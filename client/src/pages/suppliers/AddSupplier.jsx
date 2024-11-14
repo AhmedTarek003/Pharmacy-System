@@ -1,6 +1,8 @@
 import { useState } from "react";
 import FormField from "../../components/ui/FormField";
 import Button from "../../components/ui/Button";
+import useAddSupplier from "../../hooks/supplier/useAddSupplier";
+import Loading from "../../components/ui/Loading";
 
 const AddSupplier = () => {
   const [formValues, setFormValues] = useState({
@@ -13,9 +15,10 @@ const AddSupplier = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  const submitHandler = (e) => {
+  const { addSupplier, loading } = useAddSupplier();
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(formValues);
+    await addSupplier(formValues);
   };
   return (
     <div>
@@ -60,6 +63,7 @@ const AddSupplier = () => {
           <Button text={"Add"} />
         </form>
       </div>
+      {loading && <Loading />}
     </div>
   );
 };

@@ -2,12 +2,19 @@ import { useState } from "react";
 import SearchInput from "../../components/ui/SearchInput";
 import Table from "../../components/ui/Table";
 import { deleteAlert } from "../../utils/deleteAlert";
-import { suppliers } from "../../utils/dummyDate";
 import { Link } from "react-router-dom";
 import CreateBottom from "../../components/ui/CreateBottom";
+import useGetAllSuppliers from "../../hooks/supplier/useGetAllSuppliers";
+import { useSelector } from "react-redux";
+import Loader from "../../components/ui/Loader";
+import useDeleteSupplier from "../../hooks/supplier/useDeleteSupplier";
+import Loading from "../../components/ui/Loading";
 
 const Suppliers = () => {
   const [search, setSearch] = useState("");
+  const { loading } = useGetAllSuppliers(search);
+  const { suppliers } = useSelector((state) => state.supplier);
+  const { deleteSupplier, loading: deleteLoading } = useDeleteSupplier();
   const columns = [
     { label: "name", key: "userName" },
     { label: "email", key: "email" },
@@ -26,7 +33,7 @@ const Suppliers = () => {
           </Link>
           <div
             className="bg-red-200 text-red-600 px-3 py-1 text-sm rounded-md cursor-pointer"
-            onClick={() => deleteAlert()}
+            onClick={() => deleteAlert(deleteSupplier, row._id)}
           >
             delete
           </div>
@@ -45,6 +52,8 @@ const Suppliers = () => {
         <SearchInput search={search} setSearch={setSearch} />
       </div>
       <Table columns={columns} data={suppliers} />
+      {loading && <Loader />}
+      {deleteLoading && <Loading />}
     </div>
   );
 };

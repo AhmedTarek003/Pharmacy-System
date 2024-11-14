@@ -10,8 +10,8 @@ const useGetAllMedicines = (search, sort) => {
 
   useEffect(() => {
     const getAllMedicines = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const { data } = await request.get(
           `/medicines?search=${search}&sort=${sort}`
         );

@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export function deleteAlert(deleteMedicine, id) {
+export function deleteAlert(deleteFun, id) {
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
@@ -11,7 +11,7 @@ export function deleteAlert(deleteMedicine, id) {
     confirmButtonText: "Yes, delete it!",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      await deleteMedicine(id);
+      await deleteFun(id);
     }
   });
 }

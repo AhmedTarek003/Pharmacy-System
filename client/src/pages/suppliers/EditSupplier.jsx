@@ -1,65 +1,91 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormField from "../../components/ui/FormField";
-import { suppliers } from "../../utils/dummyDate";
 import Button from "../../components/ui/Button";
+import useGetSupplier from "../../hooks/supplier/useGetSupplier";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Loader from "../../components/ui/Loader";
+import useUpdateSupplier from "../../hooks/supplier/useUpdateSupplier";
+import Loading from "../../components/ui/Loading";
 
 const EditSupplier = () => {
-  const supplier = suppliers[0];
+  const { id } = useParams();
+  const { loading } = useGetSupplier(id);
+  const { supplier } = useSelector((state) => state.supplier);
   const [formValues, setFormValues] = useState({
-    userName: supplier?.userName,
-    email: supplier?.email,
-    phoneNumber: supplier?.phoneNumber,
-    address: supplier?.address,
+    userName: supplier ? supplier?.userName : "",
+    email: supplier ? supplier?.email : "",
+    phoneNumber: supplier ? supplier?.phoneNumber : "",
+    address: supplier ? supplier?.address : "",
   });
+  useEffect(() => {
+    if (supplier) {
+      setFormValues({
+        userName: supplier?.userName,
+        email: supplier?.email,
+        phoneNumber: supplier?.phoneNumber,
+        address: supplier?.address,
+      });
+    }
+  }, [supplier]);
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  const submitHandler = (e) => {
+
+  const { updateSupplier, loading: updateLoading } = useUpdateSupplier();
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(formValues);
+    await updateSupplier(id, formValues);
   };
   return (
     <div>
       <h1 className="page-title">Supplier info</h1>
-      <form
-        onSubmit={submitHandler}
-        className="w-[30%] max-md:w-[80%] mx-auto mt-5"
-      >
-        <FormField
-          label={"supplier"}
-          type={"text"}
-          name={"userName"}
-          placeholder={"supplier name"}
-          value={formValues.userName}
-          onChange={onChangeHandler}
-        />
-        <FormField
-          label={"email"}
-          type={"email"}
-          name={"email"}
-          placeholder={"supplier email"}
-          value={formValues.email}
-          onChange={onChangeHandler}
-        />
-        <FormField
-          label={"phone number"}
-          type={"number"}
-          name={"phoneNumber"}
-          placeholder={"supplier phone number"}
-          value={formValues.phoneNumber}
-          onChange={onChangeHandler}
-        />
-        <FormField
-          label={"address"}
-          type={"text"}
-          name={"address"}
-          placeholder={"supplier address"}
-          value={formValues.address}
-          onChange={onChangeHandler}
-        />
-        <Button text={"Edit"} />
-      </form>
+      {loading ? (
+        <Loader />
+      ) : (
+        <form
+          onSubmit={submitHandler}
+          className="w-[30%] max-md:w-[80%] mx-auto mt-5"
+        >
+          <FormField
+            label={"supplier"}
+            type={"text"}
+            name={"userName"}
+            placeholder={"supplier name"}
+            value={formValues.userName}
+            onChange={onChangeHandler}
+          />
+          <FormField
+            label={"email"}
+            type={"email"}
+            name={"email"}
+            placeholder={"supplier email"}
+            value={formValues.email}
+            onChange={onChangeHandler}
+          />
+          <FormField
+            label={"phone number"}
+            type={"number"}
+            name={"phoneNumber"}
+            placeholder={"supplier phone number"}
+            value={formValues.phoneNumber}
+            onChange={onChangeHandler}
+          />
+          <FormField
+            label={"address"}
+            type={"text"}
+            name={"address"}
+            placeholder={"supplier address"}
+            value={formValues.address}
+            onChange={onChangeHandler}
+          />
+          <Button text={"Edit"} />
+        </form>
+      )}
+      {updateLoading && <Loading />}
     </div>
   );
 };

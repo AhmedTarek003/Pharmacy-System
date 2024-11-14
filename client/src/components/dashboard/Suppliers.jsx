@@ -1,6 +1,9 @@
-import { suppliers } from "../../utils/dummyDate";
+import { useSelector } from "react-redux";
+import useGetAllSuppliers from "../../hooks/supplier/useGetAllSuppliers";
 
 const Suppliers = () => {
+  useGetAllSuppliers("");
+  const { suppliers } = useSelector((state) => state.supplier);
   const sortedSuplliers = suppliers
     .slice()
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))

@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { medicineActions } from "../../redux/slices/medincineSlice";
+import { supplierActions } from "../../redux/slices/supplierSlice";
 import { useDispatch } from "react-redux";
 import { request } from "../../utils/request";
 import toast from "react-hot-toast";
 
-const useGetMedincine = (id) => {
+const useGetSupplier = (id) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    const getMedicine = async () => {
+    const getSupplier = async () => {
       setLoading(true);
       try {
-        const { data } = await request.get(`/medicines/${id}`);
-        dispatch(medicineActions.getMedicine(data));
+        const { data } = await request.get(`/suppliers/${id}`);
+        dispatch(supplierActions.getSupplier(data));
       } catch (error) {
         console.log(error);
         toast.error(error.response.data.msg);
@@ -20,9 +20,9 @@ const useGetMedincine = (id) => {
         setLoading(false);
       }
     };
-    getMedicine();
+    getSupplier();
   }, [id, dispatch]);
   return { loading };
 };
 
-export default useGetMedincine;
+export default useGetSupplier;

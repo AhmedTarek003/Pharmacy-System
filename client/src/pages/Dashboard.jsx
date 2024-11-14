@@ -5,8 +5,10 @@ import Reports from "../components/dashboard/Reports";
 import Suppliers from "../components/dashboard/Suppliers";
 import Box from "../components/ui/Box";
 import useGetAllMedicines from "../hooks/medicine/useGetAllMedicines";
+import useGetAllSuppliers from "../hooks/supplier/useGetAllSuppliers";
 
 const Dashboard = () => {
+  // MEDICINES
   useGetAllMedicines("");
   const { medicines } = useSelector((state) => state.medicine);
   const expireMedicines = medicines?.filter(
@@ -19,6 +21,9 @@ const Dashboard = () => {
   const outStockMedicines = medicines?.filter(
     (medicine) => medicine.stock <= 0
   );
+  // SUPPLIERS
+  useGetAllSuppliers("");
+  const { suppliers } = useSelector((state) => state.supplier);
   return (
     <div className="p-5">
       <div className="flex flex-wrap gap-3 justify-center">
@@ -66,7 +71,7 @@ const Dashboard = () => {
         />
         <Box
           title={"Suppliers"}
-          number={10}
+          number={suppliers?.length}
           color={"var(--gray-color)"}
           link={"/suppliers"}
         />
