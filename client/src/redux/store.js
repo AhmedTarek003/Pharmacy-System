@@ -3,6 +3,7 @@ import { userReducer } from "./slices/userSlice";
 import { medicineReducer } from "./slices/medincineSlice";
 import { supplierReducer } from "./slices/supplierSlice";
 import { orderReducer } from "./slices/orderSlice";
+import { invoiceReducer } from "./slices/invoiceSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     medicine: medicineReducer,
     supplier: supplierReducer,
     order: orderReducer,
+    invoice: invoiceReducer,
   },
 });

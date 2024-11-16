@@ -14,7 +14,7 @@ const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [openNotifications, setOpenNotifications] = useState(false);
 
-  useGetAllMedicines("");
+  useGetAllMedicines(search);
   const { medicines } = useSelector((state) => state.medicine);
   const inStockMedicines = medicines?.filter((medicine) => medicine?.stock > 0);
 

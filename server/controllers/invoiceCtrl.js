@@ -69,6 +69,22 @@ exports.getAllInvoicesCtrl = async (req, res) => {
     res.status(200).json(invoices);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "error creating invoice" });
+    res.status(500).json({ msg: "error get all invoices" });
+  }
+};
+
+exports.getInvoiceCtrl = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const invoice = await Invoice.findById(id).populate(
+      "medicines.medicineId",
+      ["medicineName", "price"]
+    );
+
+    if (!invoice) return res.status(404).json({ msg: "Invoice not found" });
+    res.status(200).json(invoice);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "error get invoice" });
   }
 };

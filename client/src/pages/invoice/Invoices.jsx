@@ -1,17 +1,23 @@
 import moment from "moment";
 import Sort from "../../components/ui/Sort";
 import Table from "../../components/ui/Table";
-import { invoices } from "../../utils/dummyDate";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import useGetAllInvoices from "../../hooks/invoice/useGetAllInvoices";
+import { useSelector } from "react-redux";
+import Loader from "../../components/ui/Loader";
 
 const Invoices = () => {
+  const [sort, setSort] = useState("");
   const options = [
-    { key: "First Added", value: "createdAt" },
     { key: "Last Added", value: "-createdAt" },
+    { key: "First Added", value: "createdAt" },
   ];
   const handleSelectChange = (selectedOption) => {
-    console.log("Selected:", selectedOption);
+    setSort(selectedOption);
   };
+  const { loading } = useGetAllInvoices(sort);
+  const { invoices } = useSelector((state) => state.invoice);
   const columns = [
     { label: "invoice", key: "_id" },
     {
@@ -49,6 +55,7 @@ const Invoices = () => {
         />
       </div>
       <Table columns={columns} data={invoices} />
+      {loading && <Loader />}
     </div>
   );
 };
