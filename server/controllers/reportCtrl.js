@@ -1,17 +1,17 @@
 const Report = require("../models/Report");
 
 exports.getAllReportsCtrl = async (req, res) => {
-  const { type, startDate, endDate } = req.query;
+  const { type, startDate, endDate } = req.query || "";
   try {
     let reports;
-    if (type) {
+    if (type && type !== "All") {
       reports = await Report.find({ reportType: type });
     } else {
       reports = await Report.find();
     }
     if (startDate && endDate) {
       reports = await Report.find(
-        type
+        type && type !== "All"
           ? {
               $and: [
                 { createdAt: { $gte: startDate, $lte: endDate } },

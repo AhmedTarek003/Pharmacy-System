@@ -6,7 +6,7 @@ import PharmacyStock from "./pages/PharmacyStock";
 import MedicinesList from "./pages/medicines/MedicinesList";
 import Purshase from "./pages/purshase/Purshase";
 import Suppliers from "./pages/suppliers/Suppliers";
-import Reports from "./pages/Reports";
+import Reports from "./pages/report/Reports";
 import Invoices from "./pages/invoice/Invoices";
 import Dashboard from "./pages/Dashboard";
 import EditMedicine from "./pages/medicines/EditMedicine";
@@ -20,6 +20,7 @@ import MakeOrder from "./pages/purshase/MakeOrder";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import useGetUser from "./hooks/user/useGetUser";
+import ReportDetails from "./pages/report/reportDetails";
 
 function App() {
   useGetUser();
@@ -60,6 +61,7 @@ function App() {
           <Route path="invoices/create_invoice" element={<CreateInvoice />} />
           <Route path="invoices/:id" element={<SingleInvoice />} />
           <Route path="reports" element={<Reports />} />
+          <Route path="reports/:id" element={<ReportDetails />} />
         </Route>
       </Routes>
       <Toaster />

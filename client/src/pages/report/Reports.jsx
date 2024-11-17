@@ -1,11 +1,13 @@
-import { useState } from "react";
-import CheckBox from "../components/ui/CheckBox";
-import Sort from "../components/ui/Sort";
-import FormField from "../components/ui/FormField";
-import { reports } from "../utils/dummyDate";
+import { useEffect, useState } from "react";
+import CheckBox from "../../components/ui/CheckBox";
+import Sort from "../../components/ui/Sort";
+import FormField from "../../components/ui/FormField";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { FaFilePdf } from "react-icons/fa";
+import useGetAllReports from "../../hooks/report/useGetAllReports";
+import Loader from "../../components/ui/Loader";
+import { useSelector } from "react-redux";
 
 const Reports = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -16,6 +18,14 @@ const Reports = () => {
     startDate: "",
     endDate: "",
   });
+  useEffect(() => {
+    if (!isChecked) {
+      setDates({
+        startDate: "",
+        endDate: "",
+      });
+    }
+  }, [isChecked]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDates({
@@ -24,13 +34,17 @@ const Reports = () => {
     });
   };
   const options = [
+    { key: "All", value: "All" },
     { key: "Orders", value: "Orders" },
     { key: "Weekly Revenue", value: "Weekly Revenue" },
     { key: "Best Selling Medicines", value: "Best Selling Medicines" },
   ];
+  const [type, setType] = useState("");
   const handleSelectChange = (selectedOption) => {
-    console.log("Selected:", selectedOption);
+    setType(selectedOption);
   };
+  const { loading } = useGetAllReports(type, dates);
+  const { reports } = useSelector((state) => state.report);
 
   return (
     <div className="px-4 py-6 bg-gray-50 min-h-screen">
@@ -103,6 +117,7 @@ const Reports = () => {
           </Link>
         ))}
       </div>
+      {loading && <Loader />}
     </div>
   );
 };
