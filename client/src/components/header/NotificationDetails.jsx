@@ -1,32 +1,25 @@
-import { useLocation } from "react-router-dom";
-import { notifications } from "../../utils/dummyDate";
+import moment from "moment";
+import useGetNotification from "../../hooks/notification/useGetNotification";
+import { useSelector } from "react-redux";
 
-const NotificationDetails = () => {
-  const { search } = useLocation();
-  const queryParams = new URLSearchParams(search);
-  const notificationId = queryParams.get("id");
-
-  const notification = notifications.find(
-    (noti) => noti._id === notificationId
-  );
-
+const NotificationDetails = ({ closeOverlay, selectedNotification }) => {
+  useGetNotification(selectedNotification);
+  const { notification } = useSelector((state) => state.notification);
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold">Notification Details</h2>
-      {notification ? (
-        <div>
-          <p>
-            <strong>Type: </strong>
-            {notification?.type}
-          </p>
-          <p>
-            <strong>Message: </strong>
-            {notification?.message}
-          </p>
-        </div>
-      ) : (
-        <p>Notification not found!</p>
-      )}
+    <div className="bg-gray-800 bg-opacity-50 fixed w-screen h-screen inset-0 flex justify-center items-center z-50">
+      <div className="bg-white w-1/2 p-5 rounded-lg shadow-xl relative">
+        <button
+          onClick={closeOverlay}
+          className="absolute top-0 right-0 w-7 h-7 m-3 bg-red-500 text-white rounded-full"
+        >
+          X
+        </button>
+        <h2 className="text-lg font-semibold">{notification?.type}</h2>
+        <p className="mt-3">{notification?.message}</p>
+        <p className="mt-2 text-sm text-gray-500">
+          Date: {moment(notification?.createdAt).format("YYYY-MM-DD")}
+        </p>
+      </div>
     </div>
   );
 };

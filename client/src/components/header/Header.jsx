@@ -7,6 +7,7 @@ import More from "./More";
 import { useSelector } from "react-redux";
 import useGetUser from "../../hooks/user/useGetUser";
 import useGetAllMedicines from "../../hooks/medicine/useGetAllMedicines";
+import useGetAllNotifications from "../../hooks/notification/useGetAllNotifications";
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -20,6 +21,9 @@ const Header = () => {
 
   useGetUser();
   const { user } = useSelector((state) => state.user);
+  useGetAllNotifications();
+  const { notifications } = useSelector((state) => state.notification);
+  const unReadedNotifications = notifications.filter((n) => !n.read);
 
   return (
     <div
@@ -51,7 +55,9 @@ const Header = () => {
           onClick={() => setOpenNotifications(!openNotifications)}
         >
           <RiNotification2Line size={23} color="var(--gray-color)" />
-          <span className="block absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></span>
+          {unReadedNotifications?.length > 0 && (
+            <span className="block absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></span>
+          )}
         </div>
         <div className="flex flex-col items-center md:mx-2 p-0">
           <span className="text-[15px] max-md:text-[13px] font-semibold capitalize">

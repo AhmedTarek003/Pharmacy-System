@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { notifications } from "../../utils/dummyDate";
-import moment from "moment";
+import useGetAllNotifications from "../../hooks/notification/useGetAllNotifications";
+import { useSelector } from "react-redux";
+import NotificationDetails from "./NotificationDetails";
 
 const Notifications = () => {
+  useGetAllNotifications();
+  const { notifications } = useSelector((state) => state.notification);
   const [selectedNotification, setSelectedNotification] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,12 +15,9 @@ const Notifications = () => {
     const queryParams = new URLSearchParams(location.search);
     const notificationId = queryParams.get("id");
     if (notificationId) {
-      const notification = notifications.find(
-        (noti) => noti._id === notificationId
-      );
-      setSelectedNotification(notification);
+      setSelectedNotification(notificationId);
     }
-  }, [location.search]);
+  }, [location.search, notifications]);
 
   const handleNotificationClick = (id) => {
     navigate(`?id=${id}`, { replace: true });
@@ -58,24 +58,10 @@ const Notifications = () => {
       </div>
 
       {selectedNotification && (
-        <div className="bg-gray-800 bg-opacity-50 fixed w-screen h-screen inset-0 flex justify-center items-center z-10">
-          <div className="bg-white w-1/2 p-5 rounded-lg shadow-xl relative">
-            <button
-              onClick={closeOverlay}
-              className="absolute top-0 right-0 w-7 h-7 m-3 bg-red-500 text-white rounded-full"
-            >
-              X
-            </button>
-            <h2 className="text-lg font-semibold">
-              {selectedNotification?.type}
-            </h2>
-            <p className="mt-3">{selectedNotification?.message}</p>
-            <p className="mt-2 text-sm text-gray-500">
-              Date:{" "}
-              {moment(selectedNotification?.createdAt).format("YYYY-MM-DD")}
-            </p>
-          </div>
-        </div>
+        <NotificationDetails
+          closeOverlay={closeOverlay}
+          selectedNotification={selectedNotification}
+        />
       )}
     </>
   );

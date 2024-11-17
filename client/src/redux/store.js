@@ -4,6 +4,7 @@ import { medicineReducer } from "./slices/medincineSlice";
 import { supplierReducer } from "./slices/supplierSlice";
 import { orderReducer } from "./slices/orderSlice";
 import { invoiceReducer } from "./slices/invoiceSlice";
+import { notificationReducer } from "./slices/notificationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     supplier: supplierReducer,
     order: orderReducer,
     invoice: invoiceReducer,
+    notification: notificationReducer,
   },
 });

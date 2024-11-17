@@ -6,6 +6,7 @@ import Suppliers from "../components/dashboard/Suppliers";
 import Box from "../components/ui/Box";
 import useGetAllMedicines from "../hooks/medicine/useGetAllMedicines";
 import useGetAllSuppliers from "../hooks/supplier/useGetAllSuppliers";
+import useGetAllOrders from "../hooks/order/useGetAllOrders";
 
 const Dashboard = () => {
   // MEDICINES
@@ -24,6 +25,13 @@ const Dashboard = () => {
   // SUPPLIERS
   useGetAllSuppliers("");
   const { suppliers } = useSelector((state) => state.supplier);
+  // ORDERS
+  useGetAllOrders();
+  const { orders } = useSelector((state) => state.order);
+  const confirmedOrders = orders?.filter(
+    (order) => order.status === "confirmed"
+  );
+  const canceledOrders = orders?.filter((order) => order.status === "canceled");
   return (
     <div className="p-5">
       <div className="flex flex-wrap gap-3 justify-center">
@@ -53,19 +61,19 @@ const Dashboard = () => {
         />
         <Box
           title={"Orders"}
-          number={10}
+          number={orders?.length}
           color={"var(--gray-color)"}
           link={"/purshases"}
         />
         <Box
           title={"Confirmed Orders"}
-          number={10}
+          number={confirmedOrders?.length}
           color={"var(--sky-color)"}
           link={"/purshases?orders=confirmed"}
         />
         <Box
           title={"Canceled Orders"}
-          number={10}
+          number={canceledOrders?.length}
           color={"#ff7a7a"}
           link={"/purshases?orders=canceled"}
         />

@@ -1,7 +1,10 @@
 import moment from "moment";
-import { orders } from "../../utils/dummyDate";
+import { useSelector } from "react-redux";
+import useGetAllOrders from "../../hooks/order/useGetAllOrders";
 
 const RecentOrders = () => {
+  useGetAllOrders();
+  const { orders } = useSelector((state) => state.order);
   const pendingOrders = orders?.filter((order) => order.status === "pending");
   return (
     <div className="bg-white flex-[7] max-h-60 overflow-auto rounded-md p-2 shadow-lg">
