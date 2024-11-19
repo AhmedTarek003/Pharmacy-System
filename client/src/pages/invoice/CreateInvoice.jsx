@@ -137,7 +137,7 @@ const CreateInvoice = () => {
         Total Amount : <span className="font-bold">${totalAmount}</span>
       </div>
       <div className="w-fit mx-auto" onClick={makeInvoiceHandler}>
-        <Button text={"Submit"} />
+        <Button text={"Create"} />
       </div>
       {loading && <Loading />}
     </div>

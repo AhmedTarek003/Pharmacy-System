@@ -62,7 +62,8 @@ const Sidebar = () => {
             </h1>
             <Link
               to={"/invoices/create_invoice"}
-              className="block text-center bg-[var(--background-color)] hover:bg-[var(--secondery-color)] text-white p-[9px] mt-3 text-[20px] rounded-md shadow-md transition-all"
+              className="block text-center bg-[var(--background-color)] hover:bg-[var(--secondery-color)]
+              text-white p-[9px] mt-3 text-[20px] rounded-md shadow-md transition-all"
               onClick={() => setOpenMenu(false)}
             >
               create invoice
@@ -74,7 +75,8 @@ const Sidebar = () => {
                   key={to}
                   onClick={() => setOpenMenu(false)}
                   to={to}
-                  className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold hover:bg-[var(--sky-color)] hover:text-white transition-all"
+                  className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold hover:bg-[var(--sky-color)]
+                  hover:text-white transition-all"
                 >
                   {icon} <span>{label}</span>
                 </NavLink>
@@ -89,7 +91,8 @@ const Sidebar = () => {
           </h1>
           <Link
             to={"/invoices/create_invoice"}
-            className="block text-center bg-[var(--background-color)] hover:bg-[var(--secondery-color)] text-white p-[9px] mt-3 text-[20px] rounded-md shadow-md transition-all"
+            className="block text-center bg-[var(--background-color)] hover:bg-[var(--secondery-color)] 
+            text-white p-[9px] mt-3 text-[20px] rounded-md shadow-md transition-all"
           >
             create invoice
           </Link>
@@ -99,7 +102,8 @@ const Sidebar = () => {
               <NavLink
                 key={to}
                 to={to}
-                className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold hover:bg-[var(--sky-color)] hover:text-white transition-all"
+                className="flex items-center gap-2 mt-2 p-2 rounded-md text-lg font-semibold hover:bg-[var(--sky-color)]
+                hover:text-white transition-all"
               >
                 {icon} <span>{label}</span>
               </NavLink>

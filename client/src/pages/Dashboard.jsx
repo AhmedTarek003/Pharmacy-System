@@ -7,6 +7,7 @@ import Box from "../components/ui/Box";
 import useGetAllMedicines from "../hooks/medicine/useGetAllMedicines";
 import useGetAllSuppliers from "../hooks/supplier/useGetAllSuppliers";
 import useGetAllOrders from "../hooks/order/useGetAllOrders";
+import useGetWeeklySales from "../hooks/invoice/useGetWeeklySales";
 
 const Dashboard = () => {
   // MEDICINES
@@ -32,6 +33,10 @@ const Dashboard = () => {
     (order) => order.status === "confirmed"
   );
   const canceledOrders = orders?.filter((order) => order.status === "canceled");
+  // SALES
+  useGetWeeklySales();
+  const { sales } = useSelector((state) => state.invoice);
+
   return (
     <div className="p-5">
       <div className="flex flex-wrap gap-3 justify-center">
@@ -83,7 +88,11 @@ const Dashboard = () => {
           color={"var(--gray-color)"}
           link={"/suppliers"}
         />
-        <Box title={"Sales"} number={"100$"} color={"var(--sky-color)"} />
+        <Box
+          title={"Weekly Sales"}
+          number={`${sales?.sales}$`}
+          color={"var(--sky-color)"}
+        />
       </div>
       <div className="md:flex gap-3 mt-5">
         <ExpireList />

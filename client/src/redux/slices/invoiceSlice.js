@@ -6,6 +6,7 @@ const initialState = {
   invoiceItems: JSON.parse(localStorage.getItem("invoiceItems"))
     ? JSON.parse(localStorage.getItem("invoiceItems"))
     : [],
+  sales: 0,
 };
 
 const invoiceSlice = createSlice({
@@ -38,6 +39,9 @@ const invoiceSlice = createSlice({
     clearInvoice: (state) => {
       state.invoiceItems = [];
       localStorage.removeItem("invoiceItems");
+    },
+    getWeeklySales: (state, action) => {
+      state.sales = action.payload;
     },
   },
 });

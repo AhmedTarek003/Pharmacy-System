@@ -1,6 +1,7 @@
 const Invoice = require("../models/Invoice");
 const Medicine = require("../models/Medicine");
 const Notification = require("../models/Notification");
+const { weekStart, weekEnd } = require("../utils/date");
 const validateItemId = require("../utils/validateId");
 
 exports.createInvoiceCtrl = async (req, res) => {
@@ -86,5 +87,20 @@ exports.getInvoiceCtrl = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "error get invoice" });
+  }
+};
+
+exports.getSalesPerWeekCtrl = async (req, res) => {
+  try {
+    const weekInvoice = await Invoice.find({
+      createdAt: { $gte: weekStart, $lte: weekEnd },
+    });
+    const sales = weekInvoice
+      .map((invoice) => invoice.totalAmount)
+      .reduce((acc, curr) => acc + curr, 0);
+    res.status(200).json({ sales: sales });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "error get sales" });
   }
 };
