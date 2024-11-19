@@ -3,6 +3,7 @@ import useGetInvoice from "../../hooks/invoice/useGetInvoice";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loader from "../../components/ui/Loader";
+import MomentDate from "../../components/ui/MomentDate";
 
 const SingleInvoice = () => {
   const { id } = useParams();
@@ -18,10 +19,7 @@ const SingleInvoice = () => {
         ) : (
           <>
             <div className="mb-3 ml-5">
-              <div>
-                Date :{" "}
-                <span>{moment(invoice?.createdAt).format("YYYY-MM-DD")}</span>
-              </div>
+              <MomentDate label={"Date"} date={invoice?.createdAt} />
               <div>
                 Time : <span>{moment(invoice?.createdAt).format("hh:mm")}</span>
               </div>

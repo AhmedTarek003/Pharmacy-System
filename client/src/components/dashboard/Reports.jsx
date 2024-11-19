@@ -1,7 +1,11 @@
 import moment from "moment";
-import { reports } from "../../utils/dummyDate";
+import useGetAllReports from "../../hooks/report/useGetAllReports";
+import { useSelector } from "react-redux";
 
 const Reports = () => {
+  useGetAllReports("", "");
+  const { reports } = useSelector((state) => state.report);
+  console.log(reports);
   return (
     <div className="bg-white flex-[7] max-h-60 overflow-auto rounded-md p-2 shadow-lg">
       <h1 className="text-[27px] font-bold border-b-2 pb-1 w-fit mx-auto text-gray-700 text-center">

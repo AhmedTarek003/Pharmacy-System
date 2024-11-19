@@ -8,8 +8,10 @@ const useGetAllReports = (type, { startDate, endDate }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const sDate = startDate.trim() !== "" ? moment(startDate).toISOString() : "";
-  const eDate = endDate.trim() !== "" ? moment(endDate).toISOString() : "";
+  const sDate =
+    startDate && startDate.trim() !== "" ? moment(startDate).toISOString() : "";
+  const eDate =
+    startDate && endDate.trim() !== "" ? moment(endDate).toISOString() : "";
 
   useEffect(() => {
     const getAllReports = async () => {

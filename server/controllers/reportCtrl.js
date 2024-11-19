@@ -35,7 +35,8 @@ exports.getReportCtrl = async (req, res) => {
   const { id } = req.params;
   try {
     const report = await Report.findById(id).populate(
-      "bestSellingMedicines.medicineId"
+      "bestSellingMedicines.medicineId",
+      "medicineName price stock"
     );
     if (!report) return res.status(404).json({ msg: "not found report" });
     res.status(200).json(report);

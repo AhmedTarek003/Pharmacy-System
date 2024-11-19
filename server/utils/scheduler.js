@@ -134,3 +134,5 @@ corn.schedule("59 23 * * 5", async () => {
     bestSellingMedicines,
   });
 });
+
+//*/5 * * * *

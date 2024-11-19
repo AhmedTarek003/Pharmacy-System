@@ -856,22 +856,42 @@ const reports = [
     weekEndDate: "2024-11-01T21:59:59.999Z",
     bestSellingMedicines: [
       {
-        medicineId: "6718fcc21483f1153ab31081",
+        medicineId: {
+          _id: "6718fcc21483f1153ab31081",
+          medicineName: "m5",
+          price: 20,
+          stock: 11,
+        },
         quantitySold: 1,
         _id: "671f817068ba61f8397f92b9",
       },
       {
-        medicineId: "6718f583bc0629bb0073f45e",
+        medicineId: {
+          _id: "6718f583bc0629bb0073f45e",
+          medicineName: "m4",
+          price: 20,
+          stock: 0,
+        },
         quantitySold: 2,
         _id: "671f817068ba61f8397f92ba",
       },
       {
-        medicineId: "671933dfef1bc94e5c2cdd49",
+        medicineId: {
+          _id: "671933dfef1bc94e5c2cdd49",
+          medicineName: "m12",
+          price: 120,
+          stock: 98,
+        },
         quantitySold: 2,
         _id: "671f817068ba61f8397f92bb",
       },
       {
-        medicineId: "67193404ef1bc94e5c2cdd58",
+        medicineId: {
+          _id: "67193404ef1bc94e5c2cdd58",
+          medicineName: "m13",
+          price: 120,
+          stock: 100,
+        },
         quantitySold: 3,
         _id: "671f817068ba61f8397f92bc",
       },
