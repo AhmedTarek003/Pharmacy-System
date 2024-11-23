@@ -21,6 +21,7 @@ import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import useGetUser from "./hooks/user/useGetUser";
 import ReportDetails from "./pages/report/reportDetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
   useGetUser();
@@ -63,6 +64,7 @@ function App() {
           <Route path="reports" element={<Reports />} />
           <Route path="reports/:id" element={<ReportDetails />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
     </div>

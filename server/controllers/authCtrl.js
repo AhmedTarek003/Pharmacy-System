@@ -8,12 +8,30 @@ exports.registerCtrl = async (req, res) => {
     const checkUser = await User.findOne({ email });
     if (checkUser) return res.status(400).json({ msg: "user already exists" });
     const hashPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       userName,
       email,
       password: hashPassword,
     });
     await newUser.save();
+    // cookies
+    const accessToken = jwt.sign(
+      { _id: newUser._id, role: newUser.role },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "1h" }
+    );
+    const refreshToken = jwt.sign(
+      { _id: newUser._id, role: newUser.role },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "1d" }
+    );
+    res.cookie("at", accessToken, { maxAge: 60 * 60 * 1000 });
+    res.cookie("rt", refreshToken, {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: false,
+    });
     res.status(201).json({
       msg: "user registered successfully",
       user: {
