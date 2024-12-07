@@ -66,7 +66,11 @@ const MedicinesList = () => {
       key: "expireDate",
       render: (value) => moment(value).format("YYYY-MM-DD"),
     },
-    { label: "Price", key: "price" },
+    {
+      label: "Price",
+      key: "price",
+      render: (_, row) => <div>${row.price}</div>,
+    },
     { label: "Stock", key: "stock" },
     {
       label: "Actions",

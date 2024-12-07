@@ -61,7 +61,11 @@ const Purshase = () => {
       key: "createdAt",
       render: (value) => moment(value).format("YYYY-MM-DD"),
     },
-    { label: "Total Amount", key: "totalAmount" },
+    {
+      label: "Total Amount",
+      key: "totalAmount",
+      render: (_, row) => <div>${row.totalAmount}</div>,
+    },
     {
       label: "status",
       key: "status",

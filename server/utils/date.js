@@ -1,11 +1,14 @@
 const now = new Date();
 
 const weekStart = new Date(now);
-weekStart.setDate(now.getDate() - now.getDay() - 1);
+const dayOfWeek = now.getDay();
+
+const diffToSaturday = (dayOfWeek + 1) % 7;
+weekStart.setDate(now.getDate() - diffToSaturday);
 weekStart.setHours(0, 0, 0, 0);
 
-const weekEnd = new Date(now);
-weekEnd.setDate(now.getDate() + (5 - now.getDay()));
+const weekEnd = new Date(weekStart);
+weekEnd.setDate(weekStart.getDate() + 6);
 weekEnd.setHours(23, 59, 59, 999);
 
 const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);

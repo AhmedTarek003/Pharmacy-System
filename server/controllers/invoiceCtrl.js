@@ -92,10 +92,10 @@ exports.getInvoiceCtrl = async (req, res) => {
 
 exports.getSalesPerWeekCtrl = async (req, res) => {
   try {
-    const weekInvoice = await Invoice.find({
+    const weekInvoices = await Invoice.find({
       createdAt: { $gte: weekStart, $lte: weekEnd },
     });
-    const sales = weekInvoice
+    const sales = weekInvoices
       .map((invoice) => invoice.totalAmount)
       .reduce((acc, curr) => acc + curr, 0);
     res.status(200).json({ sales: sales });

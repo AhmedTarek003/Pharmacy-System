@@ -23,6 +23,7 @@ const Invoices = () => {
     {
       label: "total amount",
       key: "totalAmount",
+      render: (_, row) => <div>${row.totalAmount}</div>,
     },
     {
       label: "Date",
