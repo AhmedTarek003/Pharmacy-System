@@ -49,7 +49,7 @@ exports.ORDER_EMAIL_TEMPLATE = (supplier, rows, totalAmount, expectedDate) => {
     <!-- Closing -->
     <p>Thank you and best regards,</p>
     <p><strong>Elshfa Pharmacy</strong></p>
-    <p>01065861035</p>
+    <p>01468865039</p>
 
     <!-- Footer -->
     <div style="text-align: center; font-size: 12px; color: #888; margin-top: 20px;">
